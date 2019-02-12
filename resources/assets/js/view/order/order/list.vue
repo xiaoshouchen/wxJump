@@ -72,6 +72,13 @@
             </repeat>
         </el-dialog>
 
+        <el-dialog title="确认删除" :visible.sync="confirmDelete">
+            <div v-if="confirmDelete">
+                <el-input style="width: 70%" v-model="confirm" placeholder="删除原因"></el-input>
+                <el-button type="primary" @click="handelDel">主要按钮</el-button>
+            </div>
+        </el-dialog>
+
     </div>
 </template>
 
@@ -102,6 +109,7 @@
                 goodsOrderInfo: false,
                 updateOrder: false,
                 repeatOrder: false,
+                confirmDelete: false,
                 url: 'goodsOrder',
                 columns: [
                     {
@@ -270,12 +278,15 @@
                         tools: this.handleGetBtn()
                     }
                 ],
+                id:0,
+                index:0,
                 orderListAuth: [
                     {
                         delete: false,
                     },
                 ],
                 Briefing: '',
+                confirm: '',
             }
         },
         created: function () {
@@ -290,6 +301,7 @@
             });
 
         },
+
         mounted() {
             this.handleSetFilter('where', {status: 0});
             this.handleSetFilter('orderBy', 'created_at,desc');
@@ -302,12 +314,9 @@
                     this.ipSourceIsShow = true;
                 } else if (type == 'delete') {
                     //删除数据
-                    goodsOrderDelete(row.id).then((response) => {
-                        //成功响应动态移除表格项
-                        this.handleDeleteRow(index);
-                        //提示信息
-                        this.$message.success(response.data.msg);
-                    });
+                    this.confirmDelete = true;
+                    this.id = row.id;
+                    this.index = index;
                 } else if (type == 'show') {
                     this.id = row.id;
                     this.goodsOrderInfo = true;
@@ -315,6 +324,20 @@
                 else {
                     console.error('Tools Event:' + type + ' Not found');
                 }
+            },
+            //确认删除
+            handelDel() {
+                if (this.confirm == '') {
+                    this.$message.error('删除信息,必须填写');
+                    return false
+                }
+                goodsOrderDelete(this.id, {msg:this.confirm}).then((response) => {
+                    //成功响应动态移除表格项
+                    this.handleDeleteRow(this.index);
+                    //提示信息
+                    this.$message.success(response.data.msg);
+                    this.confirmDelete = false;
+                });
             },
 
             //tool栏按钮权限控制

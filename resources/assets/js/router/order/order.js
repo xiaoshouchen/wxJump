@@ -24,7 +24,9 @@ export default [
     {
         path: '/staff_count',name:'staff_count', component:resolve=>require(['@/view/order/order/peopleCount'],resolve)
     },
-
+    {
+        path: '/recoveryOrder',name:'recoveryOrder', component:resolve=>require(['@/view/order/order/recovery'],resolve)
+    },
 
 
 

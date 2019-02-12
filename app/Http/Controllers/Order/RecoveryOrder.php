@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class RecoveryOrder extends BaseController
 {
     /**
-     * 获得被软删除的文章
+     * 获得被软删除的订单
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -30,7 +30,7 @@ class RecoveryOrder extends BaseController
             $query = $query->where('user_id', Auth::id());
         }
         $data = $this->filter($query, $request);
-        return $this->returnData($data);
+        return $data;
     }
 
     /**

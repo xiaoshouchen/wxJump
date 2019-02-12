@@ -233,9 +233,10 @@ export const ipSource = (id) => {
     })
 };
 
-export const goodsOrderDelete = (id) => {
+export const goodsOrderDelete = (id, data) => {
     return axios.request({
         url: 'goodsOrder/'+id,
+        data,
         method: 'delete'
     })
 };

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本机
-Source Server Version : 50723
+Source Server         : 127.0.0.1
+Source Server Version : 50722
 Source Host           : localhost:3306
 Source Database       : blog
 
 Target Server Type    : MYSQL
-Target Server Version : 50723
+Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2019-02-12 17:19:31
+Date: 2019-02-12 19:44:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,7 +48,7 @@ CREATE TABLE `articles` (
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', '1', null, null, '0', '2019-02-12 05:58:52', 'ALG', '<p>1</p>', '1', '1', null, null, null, null, null, null, null, null, null, '0', '1', '1');
+INSERT INTO `articles` VALUES ('1', '1', null, null, '0', '2019-02-12 05:58:52', 'ALG', '<p>1</p>', '1', '1', null, null, null, null, null, null, null, '2019-02-12 11:42:19', null, '0', '1', '1');
 
 -- ----------------------------
 -- Table structure for authorities
@@ -67,7 +67,7 @@ CREATE TABLE `authorities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of authorities
@@ -95,6 +95,7 @@ INSERT INTO `authorities` VALUES ('23', '32', '系统配置', '系统配置控�
 INSERT INTO `authorities` VALUES ('24', '33', '文章编辑', '文章编辑权限', 'edit_articles_control', '1', '0', null, '1000', '2019-02-07 07:48:27', '2019-02-07 07:48:27');
 INSERT INTO `authorities` VALUES ('25', '30', '域名管理', '域名管理权限', 'domain_control', '1', '0', '{\"type\": true,\n                            \"data\": [{\n                                \"value\": \"add\",\n                                \"label\": \"添加\"\n                            }, {\n                                \"value\": \"edit\",\n                                \"label\": \"编辑\"\n                            }, {\n                                \"value\": \"delete\",\n                                \"label\": \"删除\"\n                            }]\n                        }', '1000', '2019-02-07 07:49:14', '2019-02-07 07:49:14');
 INSERT INTO `authorities` VALUES ('26', '34', '产品编辑', '产品编辑权限', 'edit_goods_control', '1', '0', null, '1000', '2019-02-07 08:29:08', '2019-02-07 08:29:08');
+INSERT INTO `authorities` VALUES ('27', '35', '订单回收站', '订单回收站权限关联', 'recoveryOrder_all_control', '1', '0', '{\"type\": true,\n                            \"data\": [{\n                                \"value\": \"recovery\",\n                                \"label\": \"恢复\"\n                            }, {\n                                \"value\": \"delete\",\n                                \"label\": \"删除\"\n                            }]\n                        }', '1000', '2019-02-12 11:13:33', '2019-02-12 11:13:33');
 
 -- ----------------------------
 -- Table structure for categroys
@@ -198,7 +199,7 @@ CREATE TABLE `goods` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of goods
@@ -229,8 +230,9 @@ CREATE TABLE `goods_orders` (
   `province` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
+  `msg_del` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_orders
@@ -264,7 +266,7 @@ CREATE TABLE `meals` (
   `meal_stock` int(11) NOT NULL COMMENT '套餐库存',
   `goods_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of meals
@@ -286,7 +288,7 @@ CREATE TABLE `menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of menus
@@ -316,6 +318,7 @@ INSERT INTO `menus` VALUES ('31', '1', '访问日志', null, '/visit', '1000', '
 INSERT INTO `menus` VALUES ('32', '1', '系统配置', null, '/config', '1000', '1', '2019-01-30 01:53:27', '2019-01-30 01:53:27');
 INSERT INTO `menus` VALUES ('33', '7', '文章编辑', null, '/article_edit', '1000', '0', '2019-02-07 06:48:55', '2019-02-07 06:48:55');
 INSERT INTO `menus` VALUES ('34', '25', '产品编辑', null, '/edit_goods', '1000', '0', '2019-02-07 08:28:38', '2019-02-07 08:28:38');
+INSERT INTO `menus` VALUES ('35', '19', '回收站', null, '/recoveryOrder', '1000', '1', '2019-02-12 11:11:20', '2019-02-12 11:11:52');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -454,6 +457,7 @@ INSERT INTO `oauth_access_tokens` VALUES ('4b4252e3e29869eab55fb0ac850e47a247a9d
 INSERT INTO `oauth_access_tokens` VALUES ('4bcc3d28114d2beafacb8463961672f925d61417b8c6c22045fc026dbfa5b0d32a772ad6e2cade48', '1', '1', 'JzrXZH', '[]', '0', '2018-12-05 07:56:00', '2018-12-05 07:56:00', '2019-12-05 07:56:00');
 INSERT INTO `oauth_access_tokens` VALUES ('4d2e972fc1a97dd206922d489b64a5d17b8250681f519e0482fb5a632dbd0f95480181c76d4ad392', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 02:33:20', '2018-11-21 02:33:20', '2019-11-21 02:33:20');
 INSERT INTO `oauth_access_tokens` VALUES ('5003ed950be7936a2654003e7acb6902c6b52f55912b06f04f8d58ece2a22fdc236ca4e63fa2b5a4', '1', '1', 'JzrXZH', '[]', '0', '2018-11-22 00:57:25', '2018-11-22 00:57:25', '2019-11-22 00:57:25');
+INSERT INTO `oauth_access_tokens` VALUES ('533fb1eb644db21216bf2b843788d106212561a2efd742bd3d7f1d91cdf420777254e9850f06a6b8', '1', '4', 'JzrXZH', '[]', '0', '2019-02-12 11:10:45', '2019-02-12 11:10:45', '2020-02-12 11:10:45');
 INSERT INTO `oauth_access_tokens` VALUES ('54cefe03e1e1287bff03e0ca1fdcf9c6f509400acffa5b09b9687288355de87bfde5cfffe1d163c7', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 08:47:39', '2018-11-21 08:47:39', '2019-11-21 08:47:39');
 INSERT INTO `oauth_access_tokens` VALUES ('54d37b6c92501b04786d8349fb18e9666dce0be3f27234e375974c72ce454cbbeb1c609b01549564', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 02:23:35', '2018-11-21 02:23:35', '2019-11-21 02:23:35');
 INSERT INTO `oauth_access_tokens` VALUES ('54f30f140106db70a91dc61370847ba0b335fd8e66c8e5aab17c18d67bbd309d2a003dbae6bf4faf', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 09:23:53', '2018-11-21 09:23:53', '2019-11-21 09:23:53');
@@ -556,6 +560,7 @@ INSERT INTO `oauth_access_tokens` VALUES ('df4afa6c68e685cc70d5f075e60b9b261452c
 INSERT INTO `oauth_access_tokens` VALUES ('e0bbe122ec7f9265173bd102cb6d98ddf55c2772407a113cbc2d6e5a673059266fec4b7db138a968', '1', '1', 'JzrXZH', '[]', '0', '2019-02-07 04:56:47', '2019-02-07 04:56:47', '2020-02-07 04:56:47');
 INSERT INTO `oauth_access_tokens` VALUES ('e12a53ba335ccba749b71f284c77f6e54fb05b735d94571dc030f023e0df8d05c5d303dbc5cfa3e9', '1', '1', 'JzrXZH', '[]', '0', '2019-02-08 03:54:36', '2019-02-08 03:54:36', '2020-02-08 03:54:36');
 INSERT INTO `oauth_access_tokens` VALUES ('e271d997a2560f5c363d23c0737a06d5724230ecd61e03d9d5afed5cd3baa8b91df3e70a2d1e98a5', '1', '1', 'JzrXZH', '[]', '0', '2019-02-08 03:55:34', '2019-02-08 03:55:34', '2020-02-08 03:55:34');
+INSERT INTO `oauth_access_tokens` VALUES ('e2ef1f45ef787fdf4bc8e72c946505768bb5b857e9ca762522430c0ffd40fa360e9de77e27853a9b', '1', '4', 'JzrXZH', '[]', '0', '2019-02-12 11:33:58', '2019-02-12 11:33:58', '2020-02-12 11:33:58');
 INSERT INTO `oauth_access_tokens` VALUES ('e373adb975a40678d9344a9555182767ede5ed862e955b62e107792ac4f53b20077693112867742d', '1', '1', 'JzrXZH', '[]', '0', '2019-01-22 12:30:05', '2019-01-22 12:30:05', '2020-01-22 12:30:05');
 INSERT INTO `oauth_access_tokens` VALUES ('e45fc098ac34959a72361641596756329b0dea219743393715ed776ec4ed6326cb0fc54cd9cfd4c5', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 02:12:53', '2018-11-21 02:12:53', '2019-11-21 02:12:53');
 INSERT INTO `oauth_access_tokens` VALUES ('e9c115b6b720d6e0c5a694e799a6d516c2909c68c3f400fdfc54bea127ab02e47abe4614967cd428', '3', '1', 'JzrXZH', '[]', '0', '2019-02-10 04:31:38', '2019-02-10 04:31:38', '2020-02-10 04:31:38');
@@ -614,7 +619,7 @@ CREATE TABLE `oauth_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `oauth_clients_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of oauth_clients
@@ -622,6 +627,8 @@ CREATE TABLE `oauth_clients` (
 INSERT INTO `oauth_clients` VALUES ('1', null, 'Laravel Personal Access Client', 'w8vy7v5JZHMoJll4npLUtZJYOAf2YOJQ5JG2nmOM', 'http://localhost', '1', '0', '0', '2018-11-20 05:58:33', '2018-11-20 05:58:33');
 INSERT INTO `oauth_clients` VALUES ('2', null, 'Laravel Password Grant Client', '24d5kW8p8Lgl4YZVX9OXvF8jD4wkxcgUT14CGzLX', 'http://localhost', '0', '1', '0', '2018-11-20 05:58:33', '2018-11-20 05:58:33');
 INSERT INTO `oauth_clients` VALUES ('3', null, 't', 'fiRmSzbZZ66SwkGbtamHbNejPLJ4VHi24TvxE6Pe', 'http://localhost/auth/callback', '0', '0', '0', '2018-11-20 05:59:27', '2018-11-20 05:59:27');
+INSERT INTO `oauth_clients` VALUES ('4', null, 'Laravel Personal Access Client', 'feoI5T2QRxAk47f0gGiwYc2rCo2EDXqrVm22WtQi', 'http://localhost', '1', '0', '0', '2019-02-12 11:10:25', '2019-02-12 11:10:25');
+INSERT INTO `oauth_clients` VALUES ('5', null, 'Laravel Password Grant Client', 'Sdalsaqatp7oijBwEbqWycUfI4un7XGOqabGpkjC', 'http://localhost', '0', '1', '0', '2019-02-12 11:10:25', '2019-02-12 11:10:25');
 
 -- ----------------------------
 -- Table structure for oauth_personal_access_clients
@@ -634,12 +641,13 @@ CREATE TABLE `oauth_personal_access_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `oauth_personal_access_clients_client_id_index` (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of oauth_personal_access_clients
 -- ----------------------------
 INSERT INTO `oauth_personal_access_clients` VALUES ('1', '1', '2018-11-20 05:58:33', '2018-11-20 05:58:33');
+INSERT INTO `oauth_personal_access_clients` VALUES ('2', '4', '2019-02-12 11:10:25', '2019-02-12 11:10:25');
 
 -- ----------------------------
 -- Table structure for oauth_refresh_tokens
@@ -744,39 +752,41 @@ CREATE TABLE `role_and_auth` (
   `page` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '该权限是属于哪个菜单页面的',
   `state` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=393 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=423 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of role_and_auth
 -- ----------------------------
-INSERT INTO `role_and_auth` VALUES ('365', '2', '23', '[]', null, null, 'config', '1');
-INSERT INTO `role_and_auth` VALUES ('366', '2', '5', '[\"add\",\"edit\",\"delete\",\"url\"]', null, null, 'article_list', '1');
-INSERT INTO `role_and_auth` VALUES ('367', '2', '6', '[\"add\",\"edit\",\"delete\"]', null, null, 'recovery', '1');
-INSERT INTO `role_and_auth` VALUES ('368', '2', '8', '[]', null, null, 'publish_article', '1');
-INSERT INTO `role_and_auth` VALUES ('369', '2', '25', '[\"add\",\"edit\",\"delete\"]', null, null, 'url', '1');
-INSERT INTO `role_and_auth` VALUES ('370', '2', '24', '[]', null, null, 'article_edit', '1');
-INSERT INTO `role_and_auth` VALUES ('371', '2', '13', '[\"show\",\"search\",\"delete\"]', null, null, 'goods_order', '1');
-INSERT INTO `role_and_auth` VALUES ('372', '2', '18', '[\"extension\"]', null, null, 'goods_list', '1');
-INSERT INTO `role_and_auth` VALUES ('373', '1', '1', '[\"add\",\"edit\",\"delete\"]', null, null, 'menu', '1');
-INSERT INTO `role_and_auth` VALUES ('374', '1', '22', '[]', null, null, 'visit', '1');
-INSERT INTO `role_and_auth` VALUES ('375', '1', '23', '[]', null, null, 'config', '1');
-INSERT INTO `role_and_auth` VALUES ('376', '1', '2', '[\"add\",\"edit\",\"delete\"]', null, null, 'role', '1');
-INSERT INTO `role_and_auth` VALUES ('377', '1', '3', '[\"add\",\"edit\",\"delete\",\"disable\",\"userGiveRole\",\"editUserRole\"]', null, null, 'user', '1');
-INSERT INTO `role_and_auth` VALUES ('378', '1', '4', '[\"add\",\"edit\",\"delete\"]', null, null, 'auth', '1');
-INSERT INTO `role_and_auth` VALUES ('379', '1', '5', '[\"add\",\"edit\",\"delete\",\"url\"]', null, null, 'article_list', '1');
-INSERT INTO `role_and_auth` VALUES ('380', '1', '6', '[\"add\",\"edit\",\"delete\"]', null, null, 'recovery', '1');
-INSERT INTO `role_and_auth` VALUES ('381', '1', '8', '[]', null, null, 'publish_article', '1');
-INSERT INTO `role_and_auth` VALUES ('382', '1', '25', '[\"add\",\"edit\",\"delete\"]', null, null, 'url', '1');
-INSERT INTO `role_and_auth` VALUES ('383', '1', '24', '[]', null, null, 'article_edit', '1');
-INSERT INTO `role_and_auth` VALUES ('384', '1', '12', '[\"add\",\"edit\",\"delete\"]', null, null, 'source_count', '1');
-INSERT INTO `role_and_auth` VALUES ('385', '1', '13', '[\"show\",\"search\",\"delete\"]', null, null, 'goods_order', '1');
-INSERT INTO `role_and_auth` VALUES ('386', '1', '14', '[\"add\",\"edit\",\"delete\"]', null, null, 'zh_count', '1');
-INSERT INTO `role_and_auth` VALUES ('387', '1', '15', '[\"add\",\"edit\",\"delete\"]', null, null, 'staff_count', '1');
-INSERT INTO `role_and_auth` VALUES ('388', '1', '17', '[\"add\",\"edit\",\"delete\"]', null, null, 'source', '1');
-INSERT INTO `role_and_auth` VALUES ('389', '1', '18', '[\"add\",\"edit\",\"delete\",\"extension\"]', null, null, 'goods_list', '1');
-INSERT INTO `role_and_auth` VALUES ('390', '1', '19', '[\"add\",\"edit\",\"delete\"]', null, null, 'publish_goods', '1');
-INSERT INTO `role_and_auth` VALUES ('391', '1', '20', '[\"add\",\"edit\",\"delete\"]', null, null, 'template', '1');
-INSERT INTO `role_and_auth` VALUES ('392', '1', '26', '[]', null, null, 'edit_goods', '1');
+INSERT INTO `role_and_auth` VALUES ('393', '2', '23', '[]', null, null, 'config', '1');
+INSERT INTO `role_and_auth` VALUES ('394', '2', '5', '[\"add\",\"edit\",\"delete\",\"url\"]', null, null, 'article_list', '1');
+INSERT INTO `role_and_auth` VALUES ('395', '2', '6', '[\"add\",\"edit\",\"delete\"]', null, null, 'recovery', '1');
+INSERT INTO `role_and_auth` VALUES ('396', '2', '8', '[]', null, null, 'publish_article', '1');
+INSERT INTO `role_and_auth` VALUES ('397', '2', '25', '[\"add\",\"edit\",\"delete\"]', null, null, 'url', '1');
+INSERT INTO `role_and_auth` VALUES ('398', '2', '24', '[]', null, null, 'article_edit', '1');
+INSERT INTO `role_and_auth` VALUES ('399', '2', '13', '[\"show\",\"search\",\"delete\"]', null, null, 'goods_order', '1');
+INSERT INTO `role_and_auth` VALUES ('400', '2', '27', '[\"recovery\",\"delete\"]', null, null, 'recoveryOrder', '1');
+INSERT INTO `role_and_auth` VALUES ('401', '2', '18', '[\"extension\"]', null, null, 'goods_list', '1');
+INSERT INTO `role_and_auth` VALUES ('402', '1', '1', '[\"add\",\"edit\",\"delete\"]', null, null, 'menu', '1');
+INSERT INTO `role_and_auth` VALUES ('403', '1', '22', '[]', null, null, 'visit', '1');
+INSERT INTO `role_and_auth` VALUES ('404', '1', '23', '[]', null, null, 'config', '1');
+INSERT INTO `role_and_auth` VALUES ('405', '1', '2', '[\"add\",\"edit\",\"delete\"]', null, null, 'role', '1');
+INSERT INTO `role_and_auth` VALUES ('406', '1', '3', '[\"add\",\"edit\",\"delete\",\"disable\",\"userGiveRole\",\"editUserRole\"]', null, null, 'user', '1');
+INSERT INTO `role_and_auth` VALUES ('407', '1', '4', '[\"add\",\"edit\",\"delete\"]', null, null, 'auth', '1');
+INSERT INTO `role_and_auth` VALUES ('408', '1', '5', '[\"add\",\"edit\",\"delete\",\"url\"]', null, null, 'article_list', '1');
+INSERT INTO `role_and_auth` VALUES ('409', '1', '6', '[\"add\",\"edit\",\"delete\"]', null, null, 'recovery', '1');
+INSERT INTO `role_and_auth` VALUES ('410', '1', '8', '[]', null, null, 'publish_article', '1');
+INSERT INTO `role_and_auth` VALUES ('411', '1', '25', '[\"add\",\"edit\",\"delete\"]', null, null, 'url', '1');
+INSERT INTO `role_and_auth` VALUES ('412', '1', '24', '[]', null, null, 'article_edit', '1');
+INSERT INTO `role_and_auth` VALUES ('413', '1', '12', '[\"add\",\"edit\",\"delete\"]', null, null, 'source_count', '1');
+INSERT INTO `role_and_auth` VALUES ('414', '1', '13', '[\"show\",\"search\",\"delete\"]', null, null, 'goods_order', '1');
+INSERT INTO `role_and_auth` VALUES ('415', '1', '14', '[\"add\",\"edit\",\"delete\"]', null, null, 'zh_count', '1');
+INSERT INTO `role_and_auth` VALUES ('416', '1', '15', '[\"add\",\"edit\",\"delete\"]', null, null, 'staff_count', '1');
+INSERT INTO `role_and_auth` VALUES ('417', '1', '17', '[\"add\",\"edit\",\"delete\"]', null, null, 'source', '1');
+INSERT INTO `role_and_auth` VALUES ('418', '1', '27', '[\"recovery\",\"delete\"]', null, null, 'recoveryOrder', '1');
+INSERT INTO `role_and_auth` VALUES ('419', '1', '18', '[\"add\",\"edit\",\"delete\",\"extension\"]', null, null, 'goods_list', '1');
+INSERT INTO `role_and_auth` VALUES ('420', '1', '19', '[\"add\",\"edit\",\"delete\"]', null, null, 'publish_goods', '1');
+INSERT INTO `role_and_auth` VALUES ('421', '1', '20', '[\"add\",\"edit\",\"delete\"]', null, null, 'template', '1');
+INSERT INTO `role_and_auth` VALUES ('422', '1', '26', '[]', null, null, 'edit_goods', '1');
 
 -- ----------------------------
 -- Table structure for sizes
@@ -818,11 +828,12 @@ CREATE TABLE `source_urls` (
   `source_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品的推广渠道',
   `source_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品的来源地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of source_urls
 -- ----------------------------
+INSERT INTO `source_urls` VALUES ('1', '2', 'ALG', 'http://www.wx.com/ZW5jcnlwdDItQUxHLTF6dHM=');
 
 -- ----------------------------
 -- Table structure for s_e_os

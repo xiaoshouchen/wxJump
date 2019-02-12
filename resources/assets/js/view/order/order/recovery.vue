@@ -1,21 +1,10 @@
 <template>
-    <div>
-        <div style="margin: 8px 0">
-            <el-row>
-                <el-col :span="10">
-                    <el-input placeholder="请输入要搜索的内容..." size="small" v-model="search.value" class="input-with-select">
-                        <el-select style="width: 110px;" size="small" v-model="search.field" slot="prepend"
-                                   placeholder="请选择">
-                            <el-option v-for="item in columns" :key="item.prop" v-if="item.search" :label="item.label"
-                                       :value="item.prop"></el-option>
-                        </el-select>
-                        <el-button size="small" slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
-                    </el-input>
-                </el-col>
-            </el-row>
-        </div>
-        <Table ref="table" :url="url" :columns="columns" :checkbox="false" v-on:tools="handleTools"></Table>
-    </div>
+    <Table ref="table"
+           :url="url"
+           :columns="columns"
+           :checkbox="false"
+           v-on:tools="handleTools">
+    </Table>
 </template>
 
 <script>
@@ -28,129 +17,159 @@
         mixins: [list_page],
         data() {
             return {
-                page_name: '文章',
                 url: 'recoveryOrder',
                 columns: [
                     {
                         prop: 'id',
                         label: 'ID',
-                        sort: true,
                         width: '80'
                     },
                     {
-                        prop: 'title',
-                        label: '文章标题',
-                        search: true,
+                        prop: 'meal_name',
+                        label: '购买产品+数量+套餐',
+                        width: 350,
                         render: {
                             props: {
                                 row: Object         // 接受当前行参数
                             },
                             render: function (createElement) {
-                                return createElement('a', {
-                                    attrs:{
-                                        href: this.row.url_home,
-                                        target: '_blank'
-                                    },
-                                    style:{
-                                        textDecoration:'none'
-                                    }
-                                }, this.row.title)
+                                return createElement('div', {}, [
+                                    createElement('p', {}, '订单号:' + this.row.order_num),
+                                    createElement('p', {
+                                        style: {
+                                            color: "green"
+                                        }
+                                    }, "下单时间:" + this.row.created_at),
+                                    createElement('p', {}, this.row.goods_name),
+                                    createElement('p', {}, this.row.meal_name + "×" + this.row.num),
+                                ]);
+
                             }
                         }
                     },
                     {
-                        prop: 'author',
-                        label: '文章作者',
-                        width: '180',
+                        prop: 'paytype',
+                        label: '支付方式',
+                        width: 100,
+                        render: {
+                            props: {
+                                row: Object         // 接受当前行参数
+                            },
+                            render: function (createElement) {
+                                return createElement('div', {}, [
+                                    createElement('el-tag', {
+                                        attr: {
+                                            type: "success"
+                                        }
+                                    }, this.row.paytype),
+                                    createElement('p', {
+                                        style: {
+                                            color: "red"
+                                        }
+                                    }, "总额:" + this.row.order_total_price),
+                                ]);
+                            }
+                        }
                     },
                     {
-                        prop: 'category',
-                        label: '分类',
-                        width: '180'
+                        prop: 'name',
+                        label: '收货人',
+                        width: 115,
+                        render: {
+                            props: {
+                                row: Object         // 接受当前行参数
+                            },
+                            render: function (createElement) {
+                                return createElement('div', {}, [
+                                    createElement('p', {}, this.row.name),
+                                    createElement('p', {}, this.row.phone),
+                                ]);
+                            }
+                        }
+                    },
+                    {
+                        prop: 'address',
+                        label: '地址',
+                        width: 360,
+                        render: {
+                            props: {
+                                row: Object         // 接受当前行参数
+                            },
+                            render: function (createElement) {
+                                return createElement('div', {}, [
+                                    createElement('p', {}, "地址:" + this.row.address),
+                                    createElement('p', {}, "IP:" + this.row.ip),
+                                ]);
+                            }
+                        }
+                    },
+                    {
+                        prop: 'message',
+                        label: '客户留言',
+                    },
+                    {
+                        prop: 'source',
+                        label: '订单来源',
+                        width: 110,
+                        render: {
+                            props: {
+                                row: Object         // 接受当前行参数
+                            },
+                            render: function (createElement) {
+                                return createElement('div', {}, [
+                                    createElement('el-tag', {
+                                        attr: {
+                                            type: "info"
+                                        }
+                                    }, this.row.source),
+                                ]);
+                            }
+                        }
                     },
                     {
                         prop: 'status',
-                        label: 'appId/音乐/封面',
-                        width: '120',
+                        label: '订单状态',
+                        width: 120,
+                        filter: {            // 是否可筛选,不需要筛选则不填此属性
+                            multiple: false,                     // 是否可多选，默认为true
+                            data: [
+                                {
+                                    value: '0',
+                                    text: '未发货',
+                                },
+                                {
+                                    value: '1',
+                                    text: '已发货',
+                                },
+                                {
+                                    value: '2',
+                                    text: '无效信息',
+                                },
+                            ]
+                        },
                         render: {
                             props: {
                                 row: Object         // 接受当前行参数
                             },
-                            render: function (createElement) {
-                                // 参考链接 https://cn.vuejs.org/v2/guide/render-function.html#%E8%99%9A%E6%8B%9F-DOM
-                                return createElement('div', [
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.status.appid.color,
-                                            fontSize: '30px',
-                                            padding: '5px'
+                            render: function (h) {
+                                return h('el-select', {
+                                        props: {
+                                            value: this.row.status,
+                                            size: 'small',
+                                            placeholder: '标记处理状态'
                                         },
-                                    }, this.row.status.appid.status),
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.status.music.color,
-                                            fontSize: '30px',
-                                            padding: '5px'
-                                        },
-                                    }, this.row.status.music.status),
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.status.photo.color,
-                                            fontSize: '30px',
-                                            padding: '5px'
-                                        },
-                                    }, this.row.status.photo.status),
-                                ])
+                                    },
+                                    [
+                                        h('el-option', {props: {value: 0, label: '未发货'}}),
+                                        h('el-option', {props: {value: 1, label: '已发货'}}),
+                                        h('el-option', {props: {value: 2, label: '无效信息'}}),
+                                    ]);
                             }
                         }
                     },
                     {
-                        prop: 'other',
-                        label: '箭头返回/按键返回/立即跳转',
-                        width: '180',
-                        render: {
-                            props: {
-                                row: Object         // 接受当前行参数
-                            },
-                            render: function (createElement) {
-                                // 参考链接 https://cn.vuejs.org/v2/guide/render-function.html#%E8%99%9A%E6%8B%9F-DOM
-                                return createElement('div', [
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.other.arrow.color,
-                                            fontSize: '30px',
-                                            paddingLeft: '20px',
-                                        },
-                                    }, this.row.other.arrow.status),
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.other.physics.color,
-                                            fontSize: '30px',
-                                            paddingLeft: '20px',
-                                        },
-                                    }, this.row.other.physics.status),
-                                    createElement('span', {
-                                        style: {
-                                            color: this.row.other.right_now.color,
-                                            fontSize: '30px',
-                                            paddingLeft: '20px',
-                                        },
-                                    }, this.row.other.right_now.status),
-                                ])
-                            }
-                        }
-                    },
-                    {
-                        prop: 'click',
-                        label: '点击量',
-                        sort: true,
-                        width: '100'
-                    },
-                    {
-                        prop: 'publish_time',
-                        label: '发布日期',
-                        sort: true,
-                        width: '120'
+                      prop:'msg_del',
+                      label: '删除原因',
                     },
                     {
                         label: '操作',
@@ -158,13 +177,6 @@
                         tools: this.handleGetBtn()
                     }
                 ],
-                articleAuth: [
-                    {
-                        add: false,
-                    },
-                ],
-                options: [],
-                selectedOptions: [],
             }
         },
         methods: {
@@ -189,6 +201,7 @@
                     console.error('Tools Event:' + type + ' Not found');
                 }
             },
+
             //tool栏按钮权限控制
             handleGetBtn() {
                 let conf = {

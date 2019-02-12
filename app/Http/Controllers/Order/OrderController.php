@@ -261,4 +261,20 @@ class OrderController extends BaseController
         ]);
     }
 
+    /**
+     * 订单删除
+     *
+     * @param \App\Http\Controllers\ID $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $msg = request()->get('msg');
+        GoodsOrder::query()->update([
+           'msg_del' => $msg
+        ]);
+        $res = GoodsOrder::destroy($id);
+        return $this->returnMsg($res);
+    }
+
 }

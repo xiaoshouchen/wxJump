@@ -69,7 +69,7 @@ Route::group(['namespace'=>'Order'],function () {
      */
     Route::prefix('recoveryOrder')->group(function (){
         Route::get('/','RecoveryOrder@getList');
-        Route::put('/{id}','RecoveryOrder@recoveryArticle');
+        Route::put('/{id}','RecoveryOrder@recoveryOrder');
         Route::delete('/{id}','RecoveryOrder@delete');
     });
 });

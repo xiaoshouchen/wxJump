@@ -6,13 +6,13 @@ webpackJsonp([12],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(402)
+  __webpack_require__(405)
 }
 var normalizeComponent = __webpack_require__(236)
 /* script */
-var __vue_script__ = __webpack_require__(404)
+var __vue_script__ = __webpack_require__(407)
 /* template */
-var __vue_template__ = __webpack_require__(406)
+var __vue_template__ = __webpack_require__(409)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1479,13 +1479,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 402:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(403);
+var content = __webpack_require__(406);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1506,7 +1506,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 403:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(79)(false);
@@ -1521,7 +1521,7 @@ exports.push([module.i, "\n.el-input__inner {\n    height: 35px;\n}\n", ""]);
 
 /***/ }),
 
-/***/ 404:
+/***/ 407:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1529,7 +1529,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_public_table__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_public_table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_public_table__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_list_page__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_recovery__ = __webpack_require__(405);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_recovery__ = __webpack_require__(408);
 //
 //
 //
@@ -1686,7 +1686,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             if (type == 'recovery') {
-                Object(__WEBPACK_IMPORTED_MODULE_2__api_recovery__["a" /* recovery_article */])(row.id).then(function (response) {
+                Object(__WEBPACK_IMPORTED_MODULE_2__api_recovery__["c" /* recovery_article */])(row.id).then(function (response) {
                     //成功响应动态移除表格项
                     _this.handleDeleteRow(index);
                     //提示信息
@@ -1694,7 +1694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             } else if (type == 'delete') {
                 //删除数据
-                Object(__WEBPACK_IMPORTED_MODULE_2__api_recovery__["b" /* recovery_del */])(row.id).then(function (response) {
+                Object(__WEBPACK_IMPORTED_MODULE_2__api_recovery__["d" /* recovery_del */])(row.id).then(function (response) {
                     //成功响应动态移除表格项
                     _this.handleDeleteRow(index);
                     //提示信息
@@ -1732,12 +1732,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 405:
+/***/ 408:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return recovery_article; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return recovery_del; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return recovery_article; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return recovery_del; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return recovery_Order; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return recovery_OrderDel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_axios__ = __webpack_require__(26);
 
 
@@ -1754,9 +1756,22 @@ var recovery_del = function recovery_del(id) {
     });
 };
 
+var recovery_Order = function recovery_Order(id) {
+    return __WEBPACK_IMPORTED_MODULE_0__libs_axios__["a" /* default */].request({
+        url: '/recoveryOrder/' + id,
+        method: 'put'
+    });
+};
+var recovery_OrderDel = function recovery_OrderDel(id) {
+    return __WEBPACK_IMPORTED_MODULE_0__libs_axios__["a" /* default */].request({
+        url: '/recoveryOrder/' + id,
+        method: 'delete'
+    });
+};
+
 /***/ }),
 
-/***/ 406:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
