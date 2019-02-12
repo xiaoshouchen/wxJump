@@ -1,25 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: ALG
+ * Date: 2019/2/12
+ * Time: 17:07
+ */
 
-namespace App\Http\Controllers\Article;
+namespace App\Http\Controllers\Order;
+
 
 use App\Http\Controllers\BaseController;
-use App\Models\Article;
+use App\Models\GoodsOrder;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * 文章回收站
- *
- * Class RecoveryController
- *
- * @category RecoveryController
- * @package  App\Http\Controllers\Article
- * @author   ALG <513051043@qq.com>
- * @license  四川猪太帅科技公司 http://www.51zts.com
- * @link     接口文档链接
- */
-class RecoveryController extends BaseController
+class RecoveryOrder extends BaseController
 {
     /**
      * 获得被软删除的文章
@@ -30,7 +25,7 @@ class RecoveryController extends BaseController
      */
     public function getList(Request $request)
     {
-        $query = Article::onlyTrashed();
+        $query = GoodsOrder::query()->onlyTrashed();
         if (isSuperManager()) {
             $query = $query->where('user_id', Auth::id());
         }
@@ -45,8 +40,11 @@ class RecoveryController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function recoveryArticle($id) {
-        $article = Article::withTrashed()->find($id)->restore();
+    public function recoveryOrder($id) {
+        $article = GoodsOrder::query()
+            ->withTrashed()
+            ->find($id)
+            ->restore();
         return $this->returnMsg($article);
     }
 
@@ -58,7 +56,10 @@ class RecoveryController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function delete($id){
-        $article = Article::withTrashed()->find($id)->forceDelete();
+        $article = GoodsOrder::query()
+            ->withTrashed()
+            ->find($id)
+            ->forceDelete();
         return $this->returnMsg($article);
     }
 }

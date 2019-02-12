@@ -159,15 +159,19 @@ class OrderController extends BaseController
         return $this->filter($query, $request);
     }
 
-    //重复订单检测
+    /**
+     * 重复订单检测
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function repeatCheck()
     {
         $nameCount = GoodsOrder::query()
             ->select([
                 '*',
                 DB::raw('count(name) AS name_count')
-            ])->
-            groupBy('name')
+            ])->groupBy('name')
+            ->having('name_count', '>', 1)
             ->get()->map(function ($item) {
                 return [
                     $item->name_count,
@@ -179,8 +183,8 @@ class OrderController extends BaseController
             ->select([
                 '*',
                 DB::raw('count(phone) AS phone_count')
-            ])->
-            groupBy('phone')
+            ])->groupBy('phone')
+            ->having('phone_count', '>', 1)
             ->get()->map(function ($item) {
                 return [
                     $item->phone_count,
@@ -193,7 +197,11 @@ class OrderController extends BaseController
         ]);
     }
 
-    //订单统计信息
+    /**
+     * 订单统计信息
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function orderCount()
     {
         $query = GoodsOrder::query();

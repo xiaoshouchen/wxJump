@@ -63,4 +63,13 @@ Route::group(['namespace'=>'Order'],function () {
         Route::put('/{id}','OrderController@edit');
         Route::put('/status/{id}','OrderController@editStatus');
     });
+
+    /**
+     * 订单回收站
+     */
+    Route::prefix('recoveryOrder')->group(function (){
+        Route::get('/','RecoveryOrder@getList');
+        Route::put('/{id}','RecoveryOrder@recoveryArticle');
+        Route::delete('/{id}','RecoveryOrder@delete');
+    });
 });
