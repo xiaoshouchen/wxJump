@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,html{margin:0;padding:0;}
+html{ background:#e2e2e2;}
+body{ font-size:14px; font-family:"微软雅黑",Arial; background:#fff;-webkit-text-size-adjust:100%; max-width:750px; overflow-x:hidden; margin:0 auto; }
+a{text-decoration:none; font-family:"微软雅黑";}
+a:hover{text-decoration:none;}
+em,i{font-style:normal;}
+li{list-style:none;}
+img{border:0;vertical-align:middle;}
+table{border-collapse:collapse;border-spacing:0;}
+input{font-family:"微软雅黑"; }
+select{font-family:"微软雅黑";}
+p{word-wrap:break-word;}
+.c{clear:both;}
+.e{display:inline-block;*display:inline;*zoom:1;height:100%;width:1px;margin-left:-1px;vertical-align:middle;}
+.fr{ float:right;}
+.fl{ float:left;}
+
+.title{ text-align:center; height:45px; line-height:45px; font-size:16px; background:#FF6700; font-weight:bold; color:#fff;}
+.main-bg{ height:auto; padding:10px; overflow:hidden;}
+.main{ overflow:hidden; border-radius:5px; background:#fafafa;padding:10px;box-shadow:0 1px 2px 2px #E4E4E4;}
+.main dl{ width:100%; font-size:14px; margin:5px 0px; overflow:hidden; clear:both;}
+.main dl dt{ float: left; display: block; width: 85px;line-height: 30px; padding-right: 15px; text-align: right;text-overflow: ellipsis; overflow: hidden;white-space: nowrap;}
+.main dl dd{ margin-left: 100px; line-height:30px;}
+.main dl dd span{ background:#FF6700; color:#fff; display:inline-block; padding:3px 10px; line-height:20px;}
+.main dl dd b{ font-size:20px; color:#FF6700;}
+.submit{ text-align:center;display:block; width:96%;overflow:hidden; padding:3% 0px; background:#666; margin:3% auto; font-size:18px; color:#fff; border-radius:5px;cursor:pointer;}
+.main dl dd textarea{ width:93%; padding:1% 2%; border-radius:3px; height:50px;font-size:14px;font-family:"微软雅黑";}
+.main dl i{ margin-left:100px; height:30px; line-height:30px; width:100px;border-radius:2px; text-align:center; background:#000; color:#fff; font-size:14px; display:block;cursor:pointer;}
+.submit a{color:#fff; display:block;}
+.h-30{ height:30px; overflow:hidden;}
+
+.main dl li{ width:100%; background:#FF6700; border-radius:5px; }
+.main dl li a{ display:block; text-align:center; font-size:16px; color:#fff;padding:3% 0px;}
+
+@media screen and (max-width:500px){
+	/*
+	.main dl{ width:100%; font-size:14px; margin:5px 0px; overflow:hidden; clear:both;}
+	.main dl.dl dt{ float: left; display: block;  height: 30px; line-height: 30px; text-align:left; clear:both;}
+	.main dl.dl dd{ width:100%; min-height: 30px;clear:both; padding:0px !important;margin:0px !important; color:#666;}
+	.main dl i{ margin-left:0px; height:30px; line-height:30px; width:100px;border-radius:2px; text-align:center; background:#000; color:#fff; font-size:14px; display:block;cursor:pointer;}*/
+}

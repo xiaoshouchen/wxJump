@@ -1,0 +1,434 @@
+@charset "utf-8";
+/* CSS Document */
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select, html {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #e2e2e2;
+}
+
+body {
+    font-size: 14px;
+    font-family: "微软雅黑", Arial;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+    max-width: 750px;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    font-family: "微软雅黑";
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+em, i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input {
+    font-family: "微软雅黑";
+}
+
+select {
+    font-family: "微软雅黑";
+}
+
+p {
+    word-wrap: break-word;
+}
+
+.c {
+    clear: both;
+}
+
+.e {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 100%;
+    width: 1px;
+    margin-left: -1px;
+    vertical-align: middle;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.ptop-6 {
+    padding-top: 4px;
+}
+
+.audit-2 {
+    display: nome;
+}
+
+.audit-title {
+    height: 45px;
+    line-height: 45px;
+    padding: 0px 3%;
+    font-size: 16px;
+    background: #000;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px #333;
+}
+
+.audit-content img {
+    width: 100%;
+}
+
+.xd-title {
+    height: 45px;
+    line-height: 45px;
+    padding: 0px 3%;
+    font-size: 16px;
+    background: #000;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px #333;
+}
+
+.swiper-slide img {
+    width: 100%;
+}
+
+.xd-price-bg {
+    background: #44361C !important;
+    overflow: hidden;
+    width: 100%;
+}
+
+.xd-price-top {
+    border-bottom: 1px dotted #524524;
+}
+
+.xd-price-top dl {
+    padding: 5px 0px;
+    overflow: hidden;
+}
+
+.xd-price-top dl dt, .xd-price-top dl dd {
+    float: left;
+}
+
+.xd-price-top dl dt {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff0;
+    text-shadow: 1px 1px 0px #000;
+    width: 35%;
+    text-align: center;
+}
+
+.xd-price-top dl dd {
+    width: 20%;
+    text-align: center;
+    color: #9A9B74;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.xd-price-top dl dd .i {
+    text-decoration: line-through;
+}
+
+.xd-price-cen {
+    border-bottom: 1px dotted #524524;
+    padding: 15px 0px;
+    overflow: hidden;
+}
+
+.xd-price-cen dl dt {
+    float: left;
+    width: 35%;
+    color: #9A7C48;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.xd-price-cen dl dd {
+    float: right;
+    width: 64%;
+    text-align: center;
+    font-size: 14px;
+    color: #dd9;
+}
+
+.xd-price-cen dl dd span {
+    color: #ff5600;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 0px 3px;
+}
+
+.xd-price-foot {
+    overflow: hidden;
+    padding: 0px 10px;
+}
+
+.xd-price-foot dl a {
+    display: block;
+    width: 96%;
+    margin: 15px auto;
+    overflow: hidden;
+    padding: 10px 0px;
+    background: #ff5600;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #333;
+}
+
+nav {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    -webkit-animation: fadeInUpBig 1s 0.2s ease both;
+    -moz-animation: fadeInUpBig 1s 0.2s ease both;
+    z-index: 999;
+}
+
+nav ul {
+    margin: 0 auto;
+    padding: 0 0;
+    height: 45px;
+    width: 100%;
+    background: #ff5600;
+    overflow: hidden;
+    max-width: 750px;
+}
+
+nav ul li {
+    float: left;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    line-height: 45px;
+    width: 100%;
+    color: #fff;
+    font-size: 0.8em;
+    text-shadow: 1px 1px 1px #333;
+}
+
+nav ul li a strong {
+    display: block;
+    position: relative;
+    top: 10px;
+    left: 0;
+    font-weight: normal;
+}
+
+nav ul.Transverse {
+    position: relative;
+}
+
+nav ul.Transverse li a {
+    border-right: 1px dotted #f66;
+}
+
+nav ul.Transverse li:last-child a {
+    border-right: 0px;
+}
+
+nav ul.Transverse li a strong {
+    display: inline;
+    position: inherit;
+    font-weight: normal;
+    padding-left: 32px;
+    line-height: 45px;
+    font-size: 14px;
+}
+
+nav ul.Transverse li.index a strong {
+    background: url("../images/home.png") left center no-repeat;
+    background-size: 28px 28px;
+}
+
+nav ul.Transverse li.buy a strong {
+    background: url("../images/xiadan.png") left center no-repeat;
+    background-size: 23px 23px;
+}
+
+nav ul.Transverse li.tel a strong {
+    background: url("../images/call.png") left center no-repeat;
+    background-size: 28px 28px;
+}
+
+nav ul.Transverse li.sms a strong {
+    background: url("../images/sms.png") left center no-repeat;
+    background-size: 28px 28px;
+}
+
+nav ul.Transverse li.qq a strong {
+    background: url("../images/qq.png") left center no-repeat;
+    background-size: 25px 25px;
+}
+
+nav ul.Transverse li.top a strong {
+    background: url("../images/top.png") left center no-repeat;
+    background-size: 28px 28px;
+}
+
+nav ul.Transverse li span {
+    color: #333
+}
+
+.xd-content img {
+    width: 100%;
+}
+
+.review {
+    height: 300px;
+    width: 96%;
+    overflow: hidden;
+    margin: 10px auto;
+    color: #666;
+}
+
+.review dl {
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    padding: 5px 0px;
+}
+
+.review dl dt {
+    line-height: 20px;
+    font-size: 14px;
+    color: #333
+}
+
+.review dl dd {
+    margin-top: 5px;
+}
+
+footer {
+    width: 100%;
+    clear: both;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    line-height: 200%;
+    text-align: center;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer p img {
+    max-width: 98%;
+    margin: 0 auto;
+}
+
+footer a {
+    color: #666;
+    float: right;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .xd-price-top dl dt {
+        font-size: 40px;
+        line-height: 60px;
+        width: 40%;
+    }
+
+    .xd-price-top dl dd {
+        width: 18%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .xd-price-top dl dt {
+        font-size: 35px;
+        line-height: 60px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .xd-title {
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .xd-price-top dl dt {
+        font-size: 30px;
+        line-height: 60px;
+    }
+
+    .xd-price-top dl dd {
+        width: 18%;
+        font-size: 14px;
+    }
+
+    .xd-price-cen dl dd span {
+        color: #ff5600;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 0px 3px;
+    }
+
+    .review dl dt {
+        line-height: 20px;
+        font-size: 12px;
+        color: #333
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .xd-price-top dl dt {
+        font-size: 26px;
+        line-height: 60px;
+    }
+
+    .xd-price-top dl dd {
+        width: 18%;
+        font-size: 14px;
+    }
+}
+		

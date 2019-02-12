@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/home.css" />
+		<link rel="stylesheet" href="css/top.css" />
+		<link rel="stylesheet" href="css/foot.css" />
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/animate.min.css">
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />
+		<style type="text/css">
+			.ripple-container {}
+
+			.ripple-container .ripple {
+				background-color: red;
+				/* background-color: rgba(255,255,255,0.4); */
+				animation: ripple 1s forwards cubic-bezier(0, 0, 0.2, 1);
+			}
+
+			@keyframes ripple {
+				0% {
+					transform: scale(0);
+					opacity: 1;
+				}
+
+				80% {
+					transform: scale(1);
+				}
+
+				100% {
+					opacity: 0;
+				}
+			}
+
+			button {
+				background-color: dodgerblue;
+				color: white;
+				padding: 10px 20px;
+				border: 0;
+				font-size: 14px;
+				cursor: pointer
+			}
+		</style>
+	</head>
+	<body id="body">
+		<header>
+			<div class="home_kp">
+			</div>
+			<div id="myheader">
+				<div class="logo">
+					<img src="img/logo.png" alt="">
+				</div>
+				<div class="phone_menu">
+					<img src="img/caidan.png" alt="">
+				</div>
+				<div class="menu">
+					<ul>
+						<li>
+							<a href="home.html">首页</a>
+						</li>
+						<li>
+							<a href="company.html">公司介绍</a>
+						</li>
+						<li>
+							<a href="intreduce.html">系统介绍</a>
+						</li>
+						<li>
+							<a href="news.html">新闻中心</a>
+						</li>
+						<li>
+							<a href="contact.html">联系我们</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<section class="banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="img/banner01.png" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="img/banner01.png" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="img/banner01.png" alt="">
+						</div>
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+				</div>
+
+			</section>
+		</header>
+		<section id="content">
+			<div class="highway">
+				<img src="img/bg.png" alt="">
+			</div>
+			<div class="experience">
+				<div class="from_text">
+					<p class="red fzcyjst">APPLY FOR TRIAL</p>
+					<p class="gray fzcyjst">预约体验</p>
+				</div>
+				<div class="from_input">
+					<div>
+						<p>企业名称</p>
+						<input type="text" placeholder="企业名称">
+					</div>
+					<div>
+						<p>联系人</p>
+						<input type="text" placeholder="联系人">
+					</div>
+					<div>
+						<p>联系电话</p>
+						<input type="text" placeholder="联系电话">
+					</div>
+				</div>
+				<div class="from_btn" data-ripple>
+					提交
+				</div>
+			</div>
+			<div class="introduce">
+				<div class="introduce_c">
+					<div class="title">
+						<p class="red fzcyjst">WHAT IS HENGHENG?</p>
+						<p class="gray fzcyjst">公司介绍</p>
+					</div>
+					<div class="introduce_text gray">
+						<p>哼鸣办公是由四川猪太帅科技有限公司自主研发并运营的产品，将先进的管理思想、管理模式和软件技术、网络技术相结合，为用户提供低成本、 高效能的协同办公和管理平台。</p>
+						<p>哼哼办公平台，帮助企业加强规范工作流程、强化团队执行推动精细管理、促进企业营业增长。</p>
+					</div>
+					<div class="work_btn gray">
+						<a href="company.html">
+							查看更多
+						</a>
+					</div>
+				</div>
+				<div class="image">
+					<img src="img/book.png" alt="">
+				</div>
+			</div>
+			<div class="work">
+				<div class="image">
+					<img src="img/book.png" alt="">
+				</div>
+				<div>
+					<div class="title">
+						<p class="red fzcyjst">WHAT IS HENGHENG?</p>
+						<p class="gray fzcyjst">哼哼办公</p>
+					</div>
+					<div class="work_text gray">
+						<p>哼鸣办公是由四川猪太帅科技有限公司自主研发并运营的产品，将先进的管理思想、管理模式和软件技术、网络技术相结合，为用户提供低成本、 高效能的协同办公和管理平台。</p>
+						<p>哼哼办公平台，帮助企业加强规范工作流程、强化团队执行推动精细管理、促进企业营业增长。</p>
+					</div>
+					<div class="work_btn gray f_right">
+						<a href="intreduce.html">
+							查看更多
+						</a>
+					</div>
+				</div>
+
+			</div>
+			<div class="lightspot">
+				<div class="lightspot_c">
+					<div class="title">
+						<p class="red fzcyjst">WHAT IS POINT?</p>
+						<p class="gray fzcyjst">产品亮点</p>
+						<p class="gray fons">我们专注于中介公司工作流程管理，我们是追求完美的技术流派，我们是“成熟管理”的创造者，我们拥有
+							全局性新督能生......
+						</p>
+					</div>
+					<div class="lightspot_x">
+						<div>
+							<img src="img/gou.png" alt=""><text class="orange">全局性：</text>
+							<p>简化流程、全房掌控 </p>
+						</div>
+						<div>
+							<img src="img/gou.png" alt=""><text class="orange">全局性：</text>
+							<p>简化流程、全房掌控 </p>
+						</div>
+						<div>
+							<img src="img/gou.png" alt=""><text class="orange">全局性：</text>
+							<p>简化流程、全房掌控 </p>
+						</div>
+						<div>
+							<img src="img/gou.png" alt=""><text class="orange">全局性：</text>
+							<p>简化流程、全房掌控 </p>
+						</div>
+					</div>
+				</div>
+				<div class="l_image image">
+					<img src="img/peo.png" alt="">
+				</div>
+			</div>
+			<div class="fn">
+				<div class="image phone_unshow">
+					<img src="img/ipad.png" alt="">
+				</div>
+				<div>
+					<div class="title">
+						<p class="red fzcyjst">WHAT IS FUNCTIONAL?</p>
+						<p class="gray fzcyjst">产品功能</p>
+					</div>
+					<div class="phone_show fn_img">
+						<a href="intreduce.html">
+							<img src="img/funtional.png">
+						</a>
+					</div>
+					<div class="phone_unshow">
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+						<div class="fn_c">
+							<div class="fn_title">客服管理</div>
+							<text class="gray">人才管理、企业管理、资源公海、客户跟进</text>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="news">
+				<div>
+					<div class="title">
+						<p class="red fzcyjst">NEWS</p>
+						<p class="gray fzcyjst">新闻</p>
+					</div>
+				</div>
+				<div class="news_c">
+					<div class="news_v">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="news_v">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="news_v phone_unshow">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="news_v phone_unshow">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="news_v phone_unshow">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="news_v phone_unshow">
+						<a href="">
+							<img src="img/news.png" alt="">
+							<div class="news_text">
+								<div>
+									<p class="white">建筑资质管理：自查！这况工程...</p>
+									<p class="orange_q">建筑资质一直以来都是建筑企业实力的证明，是承接工程的放提。</p>
+								</div>
+								<div class="news_tl">
+									<text class="orange_q">2018-12-4</text>
+									<text class="white new_look">
+										查看更多
+									</text>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer id="footer">
+			<div class="footer_box">
+				<div class="footer_yq white">
+					友情链接：四川猪太帅科技有限公司
+				</div>
+				<div class="footer_box_b">
+					<div class="footer_box_l">
+						<div class="footer_menu">
+							<ul>
+								<li>
+									<a href="home.html">首页</a>
+								</li>
+								<li>
+									<a href="company.html">公司介绍</a>
+								</li>
+								<li>
+									<a href="intreduce.html">系统介绍</a>
+								</li>
+								<li>
+									<a href="news.html">新闻中心</a>
+								</li>
+								<li>
+									<a href="contact.html">联系我们</a>
+								</li>
+							</ul>
+						</div>
+						<div class="footer_text">
+							<div class="footer_text_">
+								<p>四川猪太帅科技有限公司</p>
+								<p>电话：17323057831</p>
+								<p>邮箱：2052728227@qq.com</p>
+								<p>客服QQ：2052728227</p>
+								<p>地址：成都市武侯区佳灵路红牌楼广场2号楼601室</p>
+							</div>
+							<div class="footer_img">
+								<div>
+									<img src="img/jzr.png" alt="">
+									<p>建筑人官方微信公众号</p>
+								</div>
+								<div>
+									<img src="img/jzr.png" alt="">
+									<p>建筑人官方微信公众号</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="footer_from">
+						<p class="white">预约体验</p>
+						<input type="text" placeholder="企业名称">
+						<input type="text" placeholder="联系人">
+						<input type="text" placeholder="联系电话">
+						<button>提交</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="js/top.js"></script>
+		<script src="js/myjs.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/swiper.animate.min.js"></script>
+		<script>
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				autoplay: true,
+
+				// 如果需要分页器
+				// 				pagination: {
+				// 					el: '.swiper-pagination',
+				// 				},
+
+				// 如果需要前进后退按钮
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+
+				// 如果需要滚动条
+				scrollbar: {
+					el: '.swiper-scrollbar',
+				},
+			})
+		</script>
+		<script src="js/ripple.js"></script>
+		<script type="text/javascript">
+			// just add effect to elements
+			Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element) {
+				// find all elements and attach effect
+				new RippleEffect(element); // element is instance of javascript element node
+			});
+		</script>
+	</body>
+</html>
