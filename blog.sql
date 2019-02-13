@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-02-13 17:17:11
+Date: 2019-02-13 17:36:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -237,7 +237,6 @@ CREATE TABLE `goods_orders` (
 -- ----------------------------
 -- Records of goods_orders
 -- ----------------------------
-INSERT INTO `goods_orders` VALUES ('1', '1', '1', '1', '1', '13686840083', '1', '1', '1', '1', '1.00', '1', '1', '1', '1', '2019-02-13 14:51:51', '2019-02-13 14:43:53', '1', '1', null, '客户正确回复了短信');
 
 -- ----------------------------
 -- Table structure for html_templates
