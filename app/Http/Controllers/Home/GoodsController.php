@@ -290,6 +290,8 @@ class GoodsController extends BaseController
      */
     public function buySuccess($id)
     {
+        ignore_user_abort(true); //客户端断开也继续执行
+
         $goods = GoodsOrder::query()
             ->where('id', $id)
             ->first()

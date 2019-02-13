@@ -75,7 +75,7 @@ $("document").ready(function () {
             setTimeout(function () {
                 layer.closeAll();  //关闭遮罩层
                 if (data.code == 0) {
-                    layer.msg('提交订单成功！', {icon: 1, time: 2000}, function () {
+                    layer.msg('提交订单成功！', {icon: 1}, function () {
                         window.location.href = data.url; //订单提交成功跳转到 下单成功页面
                     });
                 }

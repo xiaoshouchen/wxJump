@@ -75,7 +75,7 @@
         <el-dialog title="确认删除" :visible.sync="confirmDelete">
             <div v-if="confirmDelete">
                 <el-input style="width: 70%" v-model="confirm" placeholder="删除原因"></el-input>
-                <el-button type="primary" @click="handelDel">主要按钮</el-button>
+                <el-button type="danger" @click="handelDel">立即删除</el-button>
             </div>
         </el-dialog>
 
