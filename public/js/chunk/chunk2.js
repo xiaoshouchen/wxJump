@@ -836,6 +836,7 @@ var list_page = {
             this.$refs.table.SetChildren(row, children);
         },
 
+
         /**
          * 开启表格loading
          */
@@ -985,7 +986,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filterValue: {
                 where: {},
                 page: 1,
-                limit: 10,
+                limit: 30,
                 search: '',
                 orderBy: 'id,asc'
             },

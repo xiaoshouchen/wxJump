@@ -627,6 +627,7 @@ var list_page = {
             this.$refs.table.SetChildren(row, children);
         },
 
+
         /**
          * 开启表格loading
          */
@@ -776,7 +777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filterValue: {
                 where: {},
                 page: 1,
-                limit: 10,
+                limit: 30,
                 search: '',
                 orderBy: 'id,asc'
             },
@@ -3893,11 +3894,8 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "el-button",
-                    {
-                      attrs: { type: "primary" },
-                      on: { click: _vm.handelDel }
-                    },
-                    [_vm._v("主要按钮")]
+                    { attrs: { type: "danger" }, on: { click: _vm.handelDel } },
+                    [_vm._v("立即删除")]
                   )
                 ],
                 1

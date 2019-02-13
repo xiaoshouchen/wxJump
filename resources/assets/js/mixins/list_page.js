@@ -130,6 +130,7 @@ var list_page = {
         handleSetChild(row,children){
             this.$refs.table.SetChildren(row,children);
         },
+
         /**
          * 开启表格loading
          */

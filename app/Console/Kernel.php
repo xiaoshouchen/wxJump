@@ -6,6 +6,7 @@ use App\Models\Url;
 use App\Services\WeXinCheck\WeChatService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->call(function () { //每小时执行域名检测
+            Log::channel('accept')->info('进入:'.date('Y-m-d H:i:s', time()));
             $service = new WeChatService();
             $service->getAccessToken();
             Url::query()

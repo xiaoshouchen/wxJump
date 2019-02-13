@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-02-13 14:16:38
+Date: 2019-02-13 17:17:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `articles` (
   `appid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信appId',
   `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信密匙',
   `right_now` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '网站立即跳转到指定地址',
-  `cnzz` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文章流量统计',
+  `cnzz` text COLLATE utf8mb4_unicode_ci COMMENT '文章流量统计',
   `deleted_at` timestamp NULL DEFAULT NULL,
   `is_encryption` tinyint(1) DEFAULT NULL,
   `iframe` tinyint(1) DEFAULT NULL,
@@ -237,6 +237,7 @@ CREATE TABLE `goods_orders` (
 -- ----------------------------
 -- Records of goods_orders
 -- ----------------------------
+INSERT INTO `goods_orders` VALUES ('1', '1', '1', '1', '1', '13686840083', '1', '1', '1', '1', '1.00', '1', '1', '1', '1', '2019-02-13 14:51:51', '2019-02-13 14:43:53', '1', '1', null, '客户正确回复了短信');
 
 -- ----------------------------
 -- Table structure for html_templates
@@ -406,6 +407,7 @@ CREATE TABLE `oauth_access_tokens` (
 -- Records of oauth_access_tokens
 -- ----------------------------
 INSERT INTO `oauth_access_tokens` VALUES ('03d2b060abea00185d4b13b97f59766e52cbdcfc689d3abb1fd643bcb72913b05c5b8fb1f4f25579', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 02:45:15', '2018-11-21 02:45:15', '2019-11-21 02:45:15');
+INSERT INTO `oauth_access_tokens` VALUES ('044bae827113c195ab73b79c4f7c2d1863ae288882a73c1f4706248994d3bb8f34b05d57331a92fe', '1', '4', 'JzrXZH', '[]', '0', '2019-02-13 16:12:00', '2019-02-13 16:12:00', '2020-02-13 16:12:00');
 INSERT INTO `oauth_access_tokens` VALUES ('0503f15588dd98ffbd4d4020d3496186ad8b52d175931852dcba521dfee59003f5eed7be0127f7d1', '1', '1', 'JzrXZH', '[]', '0', '2019-02-09 03:44:10', '2019-02-09 03:44:10', '2020-02-09 03:44:10');
 INSERT INTO `oauth_access_tokens` VALUES ('06a17d2fc216772bd6e4f8110b4be4dae1316024d1df841fee2075afef4589e59afa2e881bafa021', '2', '1', 'JzrXZH', '[]', '0', '2019-02-08 03:47:22', '2019-02-08 03:47:22', '2020-02-08 03:47:22');
 INSERT INTO `oauth_access_tokens` VALUES ('074202d7a9191c2a2e13cb32a58a2991f5627ac30da6d6d0118af091f4750770e4a30358c2106614', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 06:27:35', '2018-11-21 06:27:35', '2019-11-21 06:27:35');
@@ -432,6 +434,7 @@ INSERT INTO `oauth_access_tokens` VALUES ('268ed9ce643cb6926b14032642c33c1f8b26b
 INSERT INTO `oauth_access_tokens` VALUES ('26db1d9ddb4b86bc9c87eaf3f2f85edcf658cc67f2a42a7735cc40f0cf04254c5e1c403b8b737f16', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 02:10:15', '2018-11-21 02:10:15', '2019-11-21 02:10:15');
 INSERT INTO `oauth_access_tokens` VALUES ('27fbec113166f1d40b873ae0768b08a89723250e0c47bdd328d4252ea4d0ebd217d1473cea2cd49c', '2', '1', 'JzrXZH', '[]', '0', '2019-02-08 03:57:26', '2019-02-08 03:57:26', '2020-02-08 03:57:26');
 INSERT INTO `oauth_access_tokens` VALUES ('28a802840ceca977fc26eef36fdb73e6797f71402dcc1951b295dede9dad75b475ca7d661d9e8ccf', '1', '1', 'JzrXZH', '[]', '0', '2018-11-22 00:50:42', '2018-11-22 00:50:42', '2019-11-22 00:50:42');
+INSERT INTO `oauth_access_tokens` VALUES ('2964e37e7b5f73632815ae330ff1d0a12a1bff7592e3892e2fae98ca034f0293fccaaab9010d0a3d', '1', '4', 'JzrXZH', '[]', '0', '2019-02-13 16:12:00', '2019-02-13 16:12:00', '2020-02-13 16:12:00');
 INSERT INTO `oauth_access_tokens` VALUES ('2abbd191fc0561c6f1456232f2c5685bee0f18dc3d4cd8ceb6b432eacf78822bc893fbcf6c296b1c', '2', '1', 'JzrXZH', '[]', '0', '2019-02-08 03:51:00', '2019-02-08 03:51:00', '2020-02-08 03:51:00');
 INSERT INTO `oauth_access_tokens` VALUES ('2af441e3ad694c7ee511d327eaa53a2acd21230b40ca9e307cb0944ea42fa4130a2c723736ae674a', '1', '1', 'JzrXZH', '[]', '0', '2019-02-08 04:00:53', '2019-02-08 04:00:53', '2020-02-08 04:00:53');
 INSERT INTO `oauth_access_tokens` VALUES ('2c8b7cb7ebc3be1fa3f1ce1e851f30b93bacdb84300bf21a303c4a90a60f34630b871218c4841776', '1', '1', 'JzrXZH', '[]', '0', '2018-11-21 03:16:58', '2018-11-21 03:16:58', '2019-11-21 03:16:58');
