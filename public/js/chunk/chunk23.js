@@ -1,24 +1,24 @@
 webpackJsonp([23],{
 
-/***/ 228:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(548)
+  __webpack_require__(545)
 }
-var normalizeComponent = __webpack_require__(236)
+var normalizeComponent = __webpack_require__(237)
 /* script */
-var __vue_script__ = __webpack_require__(550)
+var __vue_script__ = __webpack_require__(547)
 /* template */
-var __vue_template__ = __webpack_require__(551)
+var __vue_template__ = __webpack_require__(548)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-69110874"
+var __vue_scopeId__ = "data-v-63d04907"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/view/order/order/peopleCount.vue"
+Component.options.__file = "resources/assets/js/view/order/order/zhCount.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69110874", Component.options)
+    hotAPI.createRecord("data-v-63d04907", Component.options)
   } else {
-    hotAPI.reload("data-v-69110874", Component.options)
+    hotAPI.reload("data-v-63d04907", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -162,7 +162,7 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -181,7 +181,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(238)
+var listToStyles = __webpack_require__(239)
 
 /*
 type StyleObject = {
@@ -391,7 +391,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 238:
+/***/ 239:
 /***/ (function(module, exports) {
 
 /**
@@ -425,7 +425,7 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 242:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -700,9 +700,10 @@ var ipSource = function ipSource(id) {
     });
 };
 
-var goodsOrderDelete = function goodsOrderDelete(id) {
+var goodsOrderDelete = function goodsOrderDelete(id, data) {
     return __WEBPACK_IMPORTED_MODULE_0__libs_axios__["a" /* default */].request({
         url: 'goodsOrder/' + id,
+        data: data,
         method: 'delete'
     });
 };
@@ -789,23 +790,23 @@ var orderCountAPI = function orderCountAPI() {
 
 /***/ }),
 
-/***/ 548:
+/***/ 545:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(549);
+var content = __webpack_require__(546);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(237)("69e0affe", content, false, {});
+var update = __webpack_require__(238)("7e9ad934", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69110874\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./peopleCount.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69110874\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./peopleCount.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-63d04907\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./zhCount.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-63d04907\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./zhCount.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -816,7 +817,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 549:
+/***/ 546:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(79)(false);
@@ -824,19 +825,64 @@ exports = module.exports = __webpack_require__(79)(false);
 
 
 // module
-exports.push([module.i, "\n.sing[data-v-69110874] {\n    font-size: 16px;\n    font-weight: 600;\n}\n.count-table[data-v-69110874] {\n    margin-top:10px;\n}\ntd[data-v-69110874] {\n    border: 1px solid #000000;\n    line-height: 40px;\n    text-align: center;\n    background-color: #f9f9f9;\n}\n.table[data-v-69110874] {\n    width: 300px;\n    max-width: 100%;\n    margin-bottom: 20px;\n    border-spacing: 0;\n    border-collapse: collapse;\n    background-color: transparent;\n    margin-left: 10px;\n}\n.container[data-v-69110874] {\n    float: left;\n    margin-right:15px\n}\ntd[data-v-69110874]:last-child {\n    color:green;\n}\n", ""]);
+exports.push([module.i, "\ntd[data-v-63d04907] {\n    border: 1px solid #000000;\n    line-height: 40px;\n    text-align: center;\n    background-color: #f9f9f9;\n}\ntable[data-v-63d04907] {\n    width: 300px;\n    max-width: 100%;\n    margin-bottom: 20px;\n    border-spacing: 0;\n    border-collapse: collapse;\n    background-color: transparent;\n    margin-left: 10px;\n}\n.container[data-v-63d04907] {\n    float: left;\n    margin-right:15px\n}\n.sing[data-v-63d04907] {\n    font-size: 16px;\n    font-weight: 600;\n}\n.count-table[data-v-63d04907] {\n    margin-top:10px;\n}\ntd[data-v-63d04907]:last-child {\n    color:green;\n}\n.last>table[data-v-63d04907] {\n    width: 100%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 550:
+/***/ 547:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_goods__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_goods__ = __webpack_require__(257);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -885,7 +931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "peopleCount",
+    name: "zhCount",
     data: function data() {
         return {
             count: []
@@ -894,15 +940,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        Object(__WEBPACK_IMPORTED_MODULE_0__api_goods__["p" /* peopleCount */])().then(function (response) {
-            _this.count = response.data.data;
+        Object(__WEBPACK_IMPORTED_MODULE_0__api_goods__["H" /* zhCount */])().then(function (resource) {
+            _this.count = resource.data.data;
+            console.log(resource.data.data);
         });
     }
 });
 
 /***/ }),
 
-/***/ 551:
+/***/ 548:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -911,18 +958,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container" }, [
-      _c("span", { staticClass: "sing" }, [_vm._v("员工总订单")]),
+      _c("span", { staticClass: "sing" }, [_vm._v("月度统计:")]),
       _vm._v(" "),
-      _c("table", { staticClass: "table count-table" }, [
+      _c("table", { staticClass: "count-table" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.count.total, function(item, index) {
+          _vm._l(_vm.count.monthCount, function(item, index) {
             return _c("tr", { key: index }, [
-              _c("td", [_vm._v(_vm._s(item.source))]),
+              _c("td", [_vm._v(_vm._s(index) + "月")]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(item.order_count))]),
+              _vm._v(" "),
+              item.order_total_price_count
+                ? _c("td", [_vm._v("¥" + _vm._s(item.order_total_price_count))])
+                : _c("td", [_vm._v("¥0")])
+            ])
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("span", { staticClass: "sing" }, [_vm._v("12天销量:")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "count-table" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.count.dayCount, function(item, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [_vm._v(_vm._s(item.day) + "号")]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.data.order_count))]),
+              _vm._v(" "),
+              item.data.order_total_price_count
+                ? _c("td", [
+                    _vm._v("¥" + _vm._s(item.data.order_total_price_count))
+                  ])
+                : _c("td", [_vm._v("¥0")])
+            ])
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("span", { staticClass: "sing" }, [_vm._v("产品统计:")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "count-table" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.count.goodsNameCount, function(item, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [_vm._v(_vm._s(item.goods_name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.goods_name_count))]),
               _vm._v(" "),
               _c("td", [_vm._v("¥" + _vm._s(item.order_total_price_count))])
             ])
@@ -931,25 +1026,21 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _c("span", { staticClass: "sing" }, [_vm._v("员工今日订单")]),
+    _c("div", { staticClass: "container last" }, [
+      _c("span", { staticClass: "sing" }, [_vm._v("省份统计:")]),
       _vm._v(" "),
-      _c("table", { staticClass: "table count-table" }, [
-        _vm._m(1),
+      _c("table", { staticClass: "count-table" }, [
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.count.today, function(item, index) {
+          _vm._l(_vm.count.provinceCount, function(item, index) {
             return _c("tr", { key: index }, [
-              item.source
-                ? _c("td", [_vm._v(_vm._s(item.source))])
-                : _c("td", [_vm._v("今日暂无记录")]),
+              _c("td", [_vm._v(_vm._s(item.province))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(item.order_count))]),
               _vm._v(" "),
-              item.order_total_price_count
-                ? _c("td", [_vm._v("¥" + _vm._s(item.order_total_price_count))])
-                : _c("td", [_vm._v("¥ 0")])
+              _c("td", [_vm._v("¥" + _vm._s(item.order_total_price_count))])
             ])
           })
         )
@@ -964,11 +1055,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("员工名称")]),
+        _c("th", [_vm._v("月度统计")]),
         _vm._v(" "),
         _c("th", [_vm._v("订单数量")]),
         _vm._v(" "),
-        _c("th", [_vm._v("订单总额(元)")])
+        _c("th", [_vm._v("订单金额(元)")])
       ])
     ])
   },
@@ -978,11 +1069,39 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("员工名称")]),
+        _c("th", [_vm._v("日统计")]),
         _vm._v(" "),
         _c("th", [_vm._v("订单数量")]),
         _vm._v(" "),
-        _c("th", [_vm._v("订单总额(元)")])
+        _c("th", [_vm._v("订单金额(元)")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("产品名称")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("订单数量")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("订单金额(元)")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("所在地区")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("订单数量")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("订单金额(元)")])
       ])
     ])
   }
@@ -992,7 +1111,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-69110874", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-63d04907", module.exports)
   }
 }
 

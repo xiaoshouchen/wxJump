@@ -4,7 +4,10 @@
 Route::get('admin', function () {
     return view('admin');
 });
-Route::get('t', 't@index');
+
+//接收反馈短信链接
+Route::get('/accept', 'Home\GoodsController@AcceptSMS');
+
 
 Route::get('/report', function () {
     return view('goods.report');

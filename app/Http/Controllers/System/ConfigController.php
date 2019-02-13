@@ -67,25 +67,27 @@ class ConfigController extends Controller
 
     public function testPhone(Request $request, SmsService $service)
     {
-        $provider = $request->get('provider', 'aldy');
+        $provider = $request->get('provider', 'smsbao');
         config(["app.sms.drive.{$provider}.SignName"=>$request->get('sing_anme')]);
         config(["app.sms.drive.{$provider}.accessKeyId"=>$request->get('access_key_id')]);
         config(["app.sms.drive.{$provider}.accessKeySecret"=>$request->get('secret')]);
         config(["app.sms.drive.{$provider}.TemplateCode"=>$request->get('TemplateCode')]);
         config(['app.sms.message'=>$request->get('content')]);
-        $response = $service::drive($provider)
-            ->send(\auth()->user()->mobile);
-        if($response->Message == 'OK') {
+
+        $service::drive($provider)->setContent('测试商品信息');
+
+        $response = $service::drive($provider)->send(\auth()->user()->mobile);
+
+        if($response == '短信发送成功') {
             return response()->json([
                 'code'=>0,
-                'msg'=>'发送成功',
+                'msg'=>$response,
             ]);
         }
         else {
             return response()->json([
                 'code'=>-1,
-                'msg'=>'发送失败,具体错误保存信息后联系管理员',
-                'attach'=>$response
+                'msg'=>$response,
             ]);
         }
     }

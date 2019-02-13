@@ -13,7 +13,4 @@ interface SMS
 {
     public function send($phone);
 
-    public function check($tel, $code);
-
-    public function getRandCode();
 }

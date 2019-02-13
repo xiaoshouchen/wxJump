@@ -232,8 +232,8 @@
                 ],
                 provider: [
                     {
-                        label: '阿里大鱼',
-                        value: 'aldy'
+                        label: '短信宝',
+                        value: 'smsbao'
                     },
                 ],
                 email: {
@@ -315,7 +315,10 @@
             },
             phoneTest() {
                 phoneTest(this.phone.value).then((response)=>{
-
+                    if (response.data.code == -1) {
+                        this.$message.error(response.data.msg)
+                    }
+                    this.$message.success(response.data.msg)
                 })
             },
             emailTest() {

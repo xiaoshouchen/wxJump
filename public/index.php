@@ -5,7 +5,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
+date_default_timezone_set('Asia/Shanghai'); //北京时间用Asia/Shanghai
 define('LARAVEL_START', microtime(true));
 
 /*

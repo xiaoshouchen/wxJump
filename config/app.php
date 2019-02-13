@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -216,19 +216,27 @@ return [
             //'aldy' => \App\Services\SMS\Drive\ALDYSendSMS::class
             'aldy' => [ //阿里大鱼
                 'drive' => \App\Services\SMS\Drive\ALDYSendSMS::class,
-                'SignName' => '', //模板签名
-              //  'TemplateCode' => 'SMS_140570031', //模板代码
-                'TemplateCode' => 'SMS_157446831', //模板代码
+                'SignName' => '张光萧', //模板签名
+                'TemplateCode' => '', //模板代码
                 'accessKeyId' => '',   //tokenId
                 'accessKeySecret' => '',   //密匙
                 'domain' => "dysmsapi.aliyuncs.com"  //短信请求地址
             ],
             'lz' => [ //凌众短信   文档地址:http://www.mb345.com/download_help4.aspx
                 'drive' => \App\Services\SMS\Drive\LZSendSMS::class,
-                'CorpID' => 'LKSDK0003860', //账号
-                'Pwd' => '123321lk@', //密码
+                'accessKeyId' => '', //账号
+                'accessKeySecret' => '', //密码
+                'TemplateCode' => '', //模板代码
                 'domain' => "http://mb345.com:999/ws/BatchSend2.aspx",  //短信请求地址
                 'SignName' => '58知产网', //模板签名
+            ],
+            'smsbao' => [ //短信宝   文档地址:https://www.smsbao.com/openapi/213.html
+                'drive' => \App\Services\SMS\Drive\SmsBao\SendSMS::class,
+                'accessKeyId' => '', //账号
+                'accessKeySecret' => '', //密码
+                'TemplateCode' => '', //模板代码
+                'domain' => "http://api.smsbao.com/",  //短信请求地址
+                'SignName' => '快乐购', //模板签名
             ],
         ],
         'message' => '', //消息

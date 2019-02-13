@@ -273,6 +273,10 @@
                         }
                     },
                     {
+                        prop: 'msg_del',
+                        label: '短信状态',
+                    },
+                    {
                         label: '操作',
                         width: '200',
                         tools: this.handleGetBtn()

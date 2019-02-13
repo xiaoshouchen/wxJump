@@ -48,6 +48,12 @@ return [
             'path' => storage_path('logs/record.log'),
             'level' => 'debug',
         ],
+        'accept' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/accept.log'),
+            'level' => 'debug',
+        ],
+
 
         'daily' => [
             'driver' => 'daily',

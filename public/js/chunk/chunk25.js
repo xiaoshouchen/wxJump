@@ -1,18 +1,18 @@
 webpackJsonp([25],{
 
-/***/ 231:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(561)
+  __webpack_require__(570)
 }
-var normalizeComponent = __webpack_require__(236)
+var normalizeComponent = __webpack_require__(237)
 /* script */
-var __vue_script__ = __webpack_require__(563)
+var __vue_script__ = __webpack_require__(572)
 /* template */
-var __vue_template__ = __webpack_require__(564)
+var __vue_template__ = __webpack_require__(573)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/view/login.vue"
+Component.options.__file = "resources/assets/js/view/register.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-029e07b1", Component.options)
+    hotAPI.createRecord("data-v-5272278b", Component.options)
   } else {
-    hotAPI.reload("data-v-029e07b1", Component.options)
+    hotAPI.reload("data-v-5272278b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -162,7 +162,7 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -181,7 +181,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(238)
+var listToStyles = __webpack_require__(239)
 
 /*
 type StyleObject = {
@@ -391,7 +391,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 238:
+/***/ 239:
 /***/ (function(module, exports) {
 
 /**
@@ -425,23 +425,23 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 561:
+/***/ 570:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(562);
+var content = __webpack_require__(571);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(237)("2441a8ca", content, false, {});
+var update = __webpack_require__(238)("6e0a1f2b", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-029e07b1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./login.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-029e07b1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./login.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5272278b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./register.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5272278b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./register.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -452,7 +452,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 562:
+/***/ 571:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(79)(false);
@@ -467,17 +467,12 @@ exports.push([module.i, "\n.login{\n    width: 450px;\n    height: 300px;\n    p
 
 /***/ }),
 
-/***/ 563:
+/***/ 572:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(82);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_user__ = __webpack_require__(80);
 //
 //
 //
@@ -503,35 +498,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             form: {
-                mobile: '',
-                password: ''
+                username: null,
+                password: null,
+                mobile: null,
+                state: 0
             }
         };
     },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handleLogin']), {
+    methods: {
         onSubmit: function onSubmit() {
-            var _this = this;
-
-            this.handleLogin(this.form).then(function (res) {
-                if (res.code == 0) {
-                    _this.$message.success('登陆成功');
-                    //window.location.reload('http://www.jzrpsp.com/admin');
-                    _this.$router.push('/');
-                } else {
-                    _this.$message.error('登陆失败');
-                }
-            });
+            Object(__WEBPACK_IMPORTED_MODULE_0__api_user__["s" /* register */])(this.form);
+            this.$router.push('/login');
         },
-        handleRegister: function handleRegister() {
-            this.$router.push('/register');
+        handleLogin: function handleLogin() {
+            this.$router.push('/login');
         }
-    })
+    }
 });
 
 /***/ }),
 
-/***/ 564:
+/***/ 573:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -548,7 +536,24 @@ var render = function() {
         [
           _c(
             "el-form-item",
-            { attrs: { label: "手机号" } },
+            { attrs: { label: "用户名" } },
+            [
+              _c("el-input", {
+                model: {
+                  value: _vm.form.username,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "username", $$v)
+                  },
+                  expression: "form.username"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: "手机号码" } },
             [
               _c("el-input", {
                 model: {
@@ -556,7 +561,7 @@ var render = function() {
                   callback: function($$v) {
                     _vm.$set(_vm.form, "mobile", $$v)
                   },
-                  expression: "form.mobile "
+                  expression: "form.mobile"
                 }
               })
             ],
@@ -568,7 +573,6 @@ var render = function() {
             { attrs: { label: "密码" } },
             [
               _c("el-input", {
-                attrs: { type: "password" },
                 model: {
                   value: _vm.form.password,
                   callback: function($$v) {
@@ -587,8 +591,12 @@ var render = function() {
               _c(
                 "el-button",
                 { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
-                [_vm._v("立即登录")]
-              )
+                [_vm._v("立即注册")]
+              ),
+              _vm._v(" "),
+              _c("el-button", { on: { click: _vm.handleLogin } }, [
+                _vm._v("返回登陆")
+              ])
             ],
             1
           )
@@ -605,7 +613,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-029e07b1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5272278b", module.exports)
   }
 }
 

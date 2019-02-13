@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Services\SMS\SmsService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -185,6 +187,7 @@ class GoodsController extends BaseController
         $field['ip'] = $request->getClientIp();
         $field['goods_name'] = $this->makeGoodsName(request()->get('goods_id'));
         $field['status'] = 0;
+        $field['msg_del'] = '等待回复短信';
         $field['address'] = $this->makeAddress();
         $field['province'] = request()->get('province');
         //是否启动防刷配置
@@ -368,13 +371,13 @@ class GoodsController extends BaseController
     {
         $service = new SmsService();
         config(["app.sms.drive.{$config->provider}.SignName"=>$config->sing_anme]);
-        config(["app.sms.drive.{$config->provider}.accessKeyId"=>$config->access_key_id]);
-        config(["app.sms.drive.{$config->provider}.accessKeySecret"=>$config->secret]);
+        config(["app.sms.drive.{$config->provider}.accessKeyId"=>$config->access_key_id]);//短信平台帐号
+        config(["app.sms.drive.{$config->provider}.accessKeySecret"=>$config->secret]);//短信平台密码
+        config(["app.sms.drive.{$config->provider}.TemplateCode"=>$config->TemplateCode]);//短信平台密码
         config(['app.sms.message'=>$config->content]);
 
-//        $service::drive($config->provider)
-//            ->send($user->mobile);
-        //通知客户
+        $service::drive($config->provider)->setContent($goods['meal_name']);
+
         $service::drive($config->provider)
             ->send($goods['phone']);
     }
@@ -404,5 +407,33 @@ class GoodsController extends BaseController
             }
         }
         return false;
+    }
+
+    /**
+     * 接收客户反馈短信
+     *
+     * @param \Illuminate\Http\Request $request
+     */
+    public function AcceptSMS(Request $request)
+    {
+        $params = $request->all();
+        $currentTime = Carbon::parse(Carbon::now('Asia/Shanghai'))->format('Y-m-d H:i:s');
+        $FifteenMinutesAgo = Carbon::parse(Carbon::now('Asia/Shanghai'))->subMinutes(15)->format('Y-m-d H:i:s');
+        $goods = DB::table('goods_orders')
+            ->where('phone', $params['m'])
+            ->where('created_at', '<=', $currentTime)
+            ->where('created_at', '>=', $FifteenMinutesAgo)
+            ->orderBy('id', 'desc');
+        if ($params['c'] == '1') {
+            $goods->update([
+                'msg_del'=>'客户正确回复了短信'
+            ]);
+        }else {
+            $goods->update([
+                'msg_del'=>'客户回复了:'.$params['c']
+            ]);
+        }
+        //表示处理成功
+        echo 0;
     }
 }
