@@ -149,7 +149,7 @@
                         result[item] = conf[item];
                     }
                 });
-                return conf;
+                return result;
             }
         }
     }

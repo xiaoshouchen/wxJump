@@ -77,7 +77,7 @@ class OrderController extends BaseController
             ->where('id', $id)
             ->first()
             ->toArray();
-        $goods['source_url'] = url('') . '/' . cmf_url_encrypt($id . '-' . $goods['source']);
+        $goods['source_url'] = url('') . '/' . cmf_url_encrypt($id . '-' . $goods['source']. '-' . $goods['user_id'] ?? 0);
         return $this->returnData($goods);
     }
 
