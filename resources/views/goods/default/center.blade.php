@@ -1,21 +1,33 @@
 <body>
 <section>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
+    <div class="swiper-container swiper-container-horizontal" style="cursor: grab;">
+        <div class="swiper-wrapper" style="transform: translate3d(-1500px, 0px, 0px); transition-duration: 0ms;">
             @if($goods['wheel_photo'])
                 @foreach($goods['wheel_photo'] as $wheel)
                     <div class="swiper-slide">
                         <a href="">
-                            <img style="max-width:750px;width:100%;height: 150px;" src="{{$wheel}}" alt="">
+                            <img style="max-width:750px;width:100%" src="{{$wheel}}" alt="">
                         </a>
                     </div>
                 @endforeach
             @endif
         </div>
-        <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
     </div>
 </section>
+<script language="javascript">
+    if ($(".swiper-slide a").length > 1) {
+        loop = true;
+    } else {
+        loop = false;
+    }
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal', // 垂直切换选项
+        loop: loop,
+        grabCursor: true,
+        paginationClickable: true,
+        autoplay: 3500
+    })
+</script>
 
 
 {{--商品介绍内容区域--}}
