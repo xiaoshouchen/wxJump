@@ -268,6 +268,7 @@ class SourceController extends BaseController
                 DB::raw('SUM(order_total_price) AS order_total_price_count'),
                 DB::raw('count(*) AS order_count')
             ])
+            ->groupBy('source')
             ->whereIn('source', $userNames)
             ->get();
         $todayStartTime = Carbon::parse(Carbon::today())->startOfDay()->format('Y-m-d H:i:s');
@@ -280,6 +281,7 @@ class SourceController extends BaseController
             ])
             ->where('created_at', '>=', $todayStartTime)
             ->where('created_at', '<=', $todayEndTime)
+            ->groupBy('source')
             ->whereIn('source', $userNames)
             ->get();
         return $this->returnData($peopleCount);
