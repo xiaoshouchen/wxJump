@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0031)http://www.ffdvta.cn/jubao.html -->
+<!-- saved from url=(0033)https://www.ffdvta.cn/jubao2.html -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,12 +10,11 @@
     <title>举报</title>
     <link rel="stylesheet" href="/css/w_complain251980.css">
     <script async="" type="text/javascript" src="/js/index251980.js"></script>
-    <script src="/js/index251980.js" type="text/javascript" async=""></script>
 </head>
-<body class="zh_CN " ontouchstart="" style="">
+<body class="zh_CN " ontouchstart="">
 <div class="page_bd">
     <div id="tips" style="display:none;" class="top_tips warning"></div>
-    <div id="step1" class="category_item"><h3 class="category_title">请选择举报原因</h3>
+    <div style="display: none;" id="step1" class="category_item"><h3 class="category_title">请选择举报原因</h3>
         <form id="form1">
             <ul class="checkbox_list">
                 <li data-type="1" class="checkbox"><input id="radio_1" name="complaintype" value="2"
@@ -28,7 +27,7 @@
                                                                                                    class="frm_checkbox_label checkbox_title">
                         <div class="checkbox_label_inner">色情</div>
                     </label></li>
-                <li data-type="3" class="checkbox"><input checked="checked" id="radio_3" name="complaintype" value="16"
+                <li data-type="3" class="checkbox"><input id="radio_3" name="complaintype" value="16"
                                                           class="frm_checkbox" type="radio"><label for="radio_3"
                                                                                                    class="frm_checkbox_label checkbox_title">
                         <div class="checkbox_label_inner">政治谣言</div>
@@ -70,24 +69,21 @@
                     </label></li>
             </ul>
         </form>
-        <div class="opr_area"><a id="nextBtn" href="{{url('report2')}}"
+        <div class="opr_area"><a id="nextBtn" href="javascript:"
                                  class="btn btn_primary btn_disabled js_btn_submit">下一步</a></div>
     </div>
-    <div id="step2" class="category_item" style="display:none;"><h3 class="category_title">举报描述</h3>
+    <div id="step2" class="category_item" style=""><h3 class="category_title">举报描述</h3>
         <form>
-            <div id="textareaDiv" class="textarea_panel">
-                <textarea id="reasonText"></textarea>
-                <i id="reasonTextTips"
-                                                                                                 class="ic ic_warning ic_small"></i><span
+            <div id="textareaDiv" class="textarea_panel"><textarea id="aaa"></textarea><i id="reasonTextTips"
+                                                                                          class="ic ic_warning ic_small"></i><span
                         id="textareaLenSpan" class="frm_hint"><span id="textLen">0</span>/50</span></div>
         </form>
-        <div class="opr_area"><a id="submitBtn" href="javascript:"
+        <div class="opr_area"><a id="submitBtn" href="{{url('report3')}}"
                                  class="btn btn_primary btn_disabled js_btn_submit">提交</a></div>
     </div>
     <div id="step3" style="display:none;"></div>
 </div>
-<script>
-    window.moon_map = {
+<script>window.moon_map = {
         "biz_common/utils/url/parse.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/url/parse25b6ff.js",
         "biz_common/tmpl.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/tmpl224ef3.js",
         "complain/tips.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/complain/tips23a582.js",
@@ -97,23 +93,24 @@
         "biz_common/dom/event.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/event24f08a.js",
         "biz_common/utils/string/html.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/string/html224ef3.js",
         "complain/index.js": "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/complain/index251980.js"
-    };
-</script>
+    };</script>
 <script id="result_tmpl" type="text/html">
     <div class="page_msg">
-        <div class="icon_area">
-            <i class="icon_msg <#=type#>"></i>
-        </div>
+        <div class="icon_area"><i class="icon_msg <#=type#>"></i></div>
         <div class="text_area"><h2 id="" class="title"><#=title#></h2>
             <p id="suc_desc" class="desc"><#=desc#></p></div>
         <div class="opr_area">
-            <a id="successBtn_1" class="btn btn_primary" href="javascript:;">确定</a>
+            <a id="" class="btn btn_primary" href="http://www.qq.com">确定</a>
         </div>
     </div>
+
+
 </script>
 <script id="success_text_tmpl" type="text/html">
+
     感谢你的参与，微信坚决反对色情、暴力、欺诈等违规信息，我们会认真处理你的举报，维护绿色、健康的网络环境。</script>
 <script id="ori_fail_text_tmpl" type="text/html">
+
     你举报的文章未进行原创声明，感谢你的参与。微信坚决反对色情、暴力、欺诈等违规信息，我们会认真处理你的举报，维护绿色、健康的网络环境。</script>
 <script>
 

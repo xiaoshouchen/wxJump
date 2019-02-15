@@ -12,6 +12,14 @@ Route::get('/accept', 'Home\GoodsController@AcceptSMS');
 Route::get('/report', function () {
     return view('goods.report');
 });
+Route::get('/report2', function () {
+    return view('goods.report2');
+});
+Route::get('/report3', function () {
+    return view('goods.report3');
+});
+
+
 
 Route::get('exportOrder', function (\Illuminate\Http\Request $request) {
     $where = $request->get('where', null);
