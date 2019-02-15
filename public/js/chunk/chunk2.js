@@ -986,7 +986,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filterValue: {
                 where: {},
                 page: 1,
-                limit: 30,
+                limit: 10,
                 search: '',
                 orderBy: 'id,asc'
             },
@@ -2537,6 +2537,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2550,6 +2565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "publish",
     data: function data() {
         return {
+            activeName: 'first',
             articleForm: {
                 is_jump: 1, //开启随机跳转
                 is_wechat: "1", //是否是微信浏览器
@@ -2567,7 +2583,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 is_encryption: "", //页面加密
                 iframe: "0", //嵌套网页
                 source_check: "1", //来源检测
-                ajax: "" //异步加载文章
+                ajax: "", //异步加载文章
+                template_id: "" //模板Id
             },
             rules: {
                 title: [{ required: true, message: '文章标题为必填项目', trigger: 'blur' }],
@@ -2576,7 +2593,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             options: [],
             Ueconfig: {
                 serverUrl: '/static/UEditor/php/controller.php'
-            }
+            },
+            templateOption: [{
+                label: '',
+                value: ""
+            }, {
+                label: '外联网页,异步加载内容,加密',
+                value: 1
+            }]
         };
     },
 
@@ -2584,7 +2608,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit(articleForm) {
             var _this = this;
 
-            console.log(this.articleForm);
             if (this.handleValid(articleForm)) {
                 Object(__WEBPACK_IMPORTED_MODULE_2__api_article__["a" /* article_add */])(this.articleForm).then(function (response) {
                     _this.$message.success(response.data.msg);
@@ -2731,310 +2754,363 @@ var render = function() {
       "div",
       { staticClass: "right" },
       [
-        _c("el-card", { staticClass: "box-card" }, [
-          _c(
-            "div",
-            {
-              staticClass: "clearfix",
-              attrs: { slot: "header" },
-              slot: "header"
-            },
-            [_c("span", [_vm._v("其他选项")])]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "微信appId" },
+        _c(
+          "el-card",
+          { staticClass: "box-card" },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "clearfix",
+                attrs: { slot: "header" },
+                slot: "header"
+              },
+              [_c("span", [_vm._v("其他选项")])]
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "微信appId" },
+                  model: {
+                    value: _vm.articleForm.appid,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "appid", $$v)
+                    },
+                    expression: "articleForm.appid"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "微信密匙" },
+                  model: {
+                    value: _vm.articleForm.key,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "key", $$v)
+                    },
+                    expression: "articleForm.key"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "第三方流量统计" },
+                  model: {
+                    value: _vm.articleForm.cnzz,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "cnzz", $$v)
+                    },
+                    expression: "articleForm.cnzz"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "背景音乐" },
+                  model: {
+                    value: _vm.articleForm.music,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "music", $$v)
+                    },
+                    expression: "articleForm.music"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "文章立即跳转到指定地址" },
+                  model: {
+                    value: _vm.articleForm.right_now,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "right_now", $$v)
+                    },
+                    expression: "articleForm.right_now"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "点击文章箭头返回" },
+                  model: {
+                    value: _vm.articleForm.arrow,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "arrow", $$v)
+                    },
+                    expression: "articleForm.arrow"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "物理按键点击返回" },
+                  model: {
+                    value: _vm.articleForm.physics,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "physics", $$v)
+                    },
+                    expression: "articleForm.physics"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-tabs",
+              {
                 model: {
-                  value: _vm.articleForm.appid,
+                  value: _vm.activeName,
                   callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "appid", $$v)
+                    _vm.activeName = $$v
                   },
-                  expression: "articleForm.appid"
+                  expression: "activeName"
                 }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "微信密匙" },
-                model: {
-                  value: _vm.articleForm.key,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "key", $$v)
-                  },
-                  expression: "articleForm.key"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "第三方流量统计" },
-                model: {
-                  value: _vm.articleForm.cnzz,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "cnzz", $$v)
-                  },
-                  expression: "articleForm.cnzz"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "背景音乐" },
-                model: {
-                  value: _vm.articleForm.music,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "music", $$v)
-                  },
-                  expression: "articleForm.music"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "文章立即跳转到指定地址" },
-                model: {
-                  value: _vm.articleForm.right_now,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "right_now", $$v)
-                  },
-                  expression: "articleForm.right_now"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "点击文章箭头返回" },
-                model: {
-                  value: _vm.articleForm.arrow,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "arrow", $$v)
-                  },
-                  expression: "articleForm.arrow"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "物理按键点击返回" },
-                model: {
-                  value: _vm.articleForm.physics,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "physics", $$v)
-                  },
-                  expression: "articleForm.physics"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.is_wechat,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_wechat", $$v)
-                    },
-                    expression: "articleForm.is_wechat"
-                  }
-                },
-                [_vm._v("开启微信检测")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 1 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(1)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("页面加密")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 0 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(0)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("使用前端框架")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 2 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(2)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("异步加载")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 1 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.clickitem(1)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_jump,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_jump", $$v)
-                    },
-                    expression: "articleForm.is_jump"
-                  }
-                },
-                [_vm._v("开启主域名随机跳转")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 0 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.clickitem(0)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_jump,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_jump", $$v)
-                    },
-                    expression: "articleForm.is_jump"
-                  }
-                },
-                [_vm._v("开启二级域名随机跳转")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.iframe,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "iframe", $$v)
-                    },
-                    expression: "articleForm.iframe"
-                  }
-                },
-                [_vm._v("嵌套网页")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.source_check,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "source_check", $$v)
-                    },
-                    expression: "articleForm.source_check"
-                  }
-                },
-                [_vm._v("来源检测")]
-              )
-            ],
-            1
-          )
-        ])
+              },
+              [
+                _c(
+                  "el-tab-pane",
+                  { attrs: { label: "选项配置", name: "first" } },
+                  [
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.is_wechat,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_wechat", $$v)
+                              },
+                              expression: "articleForm.is_wechat"
+                            }
+                          },
+                          [_vm._v("开启微信检测")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 1 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(1)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("页面加密")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 0 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(0)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("使用前端框架")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 2 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(2)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("异步加载")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 1 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.clickitem(1)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_jump,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_jump", $$v)
+                              },
+                              expression: "articleForm.is_jump"
+                            }
+                          },
+                          [_vm._v("开启主域名随机跳转")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 0 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.clickitem(0)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_jump,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_jump", $$v)
+                              },
+                              expression: "articleForm.is_jump"
+                            }
+                          },
+                          [_vm._v("开启二级域名随机跳转")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.iframe,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "iframe", $$v)
+                              },
+                              expression: "articleForm.iframe"
+                            }
+                          },
+                          [_vm._v("嵌套网页")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.source_check,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "source_check", $$v)
+                              },
+                              expression: "articleForm.source_check"
+                            }
+                          },
+                          [_vm._v("来源检测")]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-tab-pane",
+                  { attrs: { label: "选择模板", name: "second" } },
+                  [
+                    _c(
+                      "el-select",
+                      {
+                        attrs: { placeholder: "请选择" },
+                        model: {
+                          value: _vm.articleForm.template_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.articleForm, "template_id", $$v)
+                          },
+                          expression: "articleForm.template_id"
+                        }
+                      },
+                      _vm._l(_vm.templateOption, function(item) {
+                        return _c("el-option", {
+                          key: item.value,
+                          attrs: { label: item.label, value: item.value }
+                        })
+                      })
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
       ],
       1
     )
@@ -3178,6 +3254,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3207,12 +3296,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 is_encryption: "", //页面加密
                 iframe: "0", //嵌套网页
                 source_check: "1", //来源检测
-                ajax: "" //异步加载文章
+                ajax: "", //异步加载文章
+                template_id: "" //模板Id
             },
+            activeName: 'first',
             rules: {
                 title: [{ required: true, message: '文章标题为必填项目', trigger: 'blur' }],
                 content: [{ required: true, message: '文章内容为必填项目', trigger: 'blur' }]
             },
+            templateOption: [{
+                label: '',
+                value: ""
+            }, {
+                label: '外联网页,异步加载内容,加密',
+                value: 1
+            }],
             options: [],
             Ueconfig: {
                 serverUrl: '/static/UEditor/php/controller.php'
@@ -3382,310 +3480,363 @@ var render = function() {
       "div",
       { staticClass: "right" },
       [
-        _c("el-card", { staticClass: "box-card" }, [
-          _c(
-            "div",
-            {
-              staticClass: "clearfix",
-              attrs: { slot: "header" },
-              slot: "header"
-            },
-            [_c("span", [_vm._v("其他选项")])]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "微信appId" },
+        _c(
+          "el-card",
+          { staticClass: "box-card" },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "clearfix",
+                attrs: { slot: "header" },
+                slot: "header"
+              },
+              [_c("span", [_vm._v("其他选项")])]
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "微信appId" },
+                  model: {
+                    value: _vm.articleForm.appid,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "appid", $$v)
+                    },
+                    expression: "articleForm.appid"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "微信密匙" },
+                  model: {
+                    value: _vm.articleForm.key,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "key", $$v)
+                    },
+                    expression: "articleForm.key"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "第三方流量统计" },
+                  model: {
+                    value: _vm.articleForm.cnzz,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "cnzz", $$v)
+                    },
+                    expression: "articleForm.cnzz"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "背景音乐" },
+                  model: {
+                    value: _vm.articleForm.music,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "music", $$v)
+                    },
+                    expression: "articleForm.music"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "文章立即跳转到指定地址" },
+                  model: {
+                    value: _vm.articleForm.right_now,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "right_now", $$v)
+                    },
+                    expression: "articleForm.right_now"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "点击文章箭头返回" },
+                  model: {
+                    value: _vm.articleForm.arrow,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "arrow", $$v)
+                    },
+                    expression: "articleForm.arrow"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              [
+                _c("el-input", {
+                  attrs: { placeholder: "物理按键点击返回" },
+                  model: {
+                    value: _vm.articleForm.physics,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleForm, "physics", $$v)
+                    },
+                    expression: "articleForm.physics"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-tabs",
+              {
                 model: {
-                  value: _vm.articleForm.appid,
+                  value: _vm.activeName,
                   callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "appid", $$v)
+                    _vm.activeName = $$v
                   },
-                  expression: "articleForm.appid"
+                  expression: "activeName"
                 }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "微信密匙" },
-                model: {
-                  value: _vm.articleForm.key,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "key", $$v)
-                  },
-                  expression: "articleForm.key"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "第三方流量统计" },
-                model: {
-                  value: _vm.articleForm.cnzz,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "cnzz", $$v)
-                  },
-                  expression: "articleForm.cnzz"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "背景音乐" },
-                model: {
-                  value: _vm.articleForm.music,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "music", $$v)
-                  },
-                  expression: "articleForm.music"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "文章立即跳转到指定地址" },
-                model: {
-                  value: _vm.articleForm.right_now,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "right_now", $$v)
-                  },
-                  expression: "articleForm.right_now"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "点击文章箭头返回" },
-                model: {
-                  value: _vm.articleForm.arrow,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "arrow", $$v)
-                  },
-                  expression: "articleForm.arrow"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c("el-input", {
-                attrs: { placeholder: "物理按键点击返回" },
-                model: {
-                  value: _vm.articleForm.physics,
-                  callback: function($$v) {
-                    _vm.$set(_vm.articleForm, "physics", $$v)
-                  },
-                  expression: "articleForm.physics"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.is_wechat,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_wechat", $$v)
-                    },
-                    expression: "articleForm.is_wechat"
-                  }
-                },
-                [_vm._v("开启微信检测")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 1 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(1)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("页面加密")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 0 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(0)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("使用前端框架")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 2 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.is_encryption(2)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_encryption,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_encryption", $$v)
-                    },
-                    expression: "articleForm.is_encryption"
-                  }
-                },
-                [_vm._v("异步加载")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 1 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.clickitem(1)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_jump,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_jump", $$v)
-                    },
-                    expression: "articleForm.is_jump"
-                  }
-                },
-                [_vm._v("开启主域名随机跳转")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-radio",
-                {
-                  attrs: { label: 0 },
-                  nativeOn: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.clickitem(0)
-                    }
-                  },
-                  model: {
-                    value: _vm.articleForm.is_jump,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "is_jump", $$v)
-                    },
-                    expression: "articleForm.is_jump"
-                  }
-                },
-                [_vm._v("开启二级域名随机跳转")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            [
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.iframe,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "iframe", $$v)
-                    },
-                    expression: "articleForm.iframe"
-                  }
-                },
-                [_vm._v("嵌套网页")]
-              ),
-              _vm._v(" "),
-              _c(
-                "el-checkbox",
-                {
-                  attrs: { "true-label": "1", "false-label": "0" },
-                  model: {
-                    value: _vm.articleForm.source_check,
-                    callback: function($$v) {
-                      _vm.$set(_vm.articleForm, "source_check", $$v)
-                    },
-                    expression: "articleForm.source_check"
-                  }
-                },
-                [_vm._v("来源检测")]
-              )
-            ],
-            1
-          )
-        ])
+              },
+              [
+                _c(
+                  "el-tab-pane",
+                  { attrs: { label: "选项配置", name: "first" } },
+                  [
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.is_wechat,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_wechat", $$v)
+                              },
+                              expression: "articleForm.is_wechat"
+                            }
+                          },
+                          [_vm._v("开启微信检测")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 1 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(1)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("页面加密")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 0 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(0)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("使用前端框架")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 2 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.is_encryption(2)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_encryption,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_encryption", $$v)
+                              },
+                              expression: "articleForm.is_encryption"
+                            }
+                          },
+                          [_vm._v("异步加载")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 1 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.clickitem(1)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_jump,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_jump", $$v)
+                              },
+                              expression: "articleForm.is_jump"
+                            }
+                          },
+                          [_vm._v("开启主域名随机跳转")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-radio",
+                          {
+                            attrs: { label: 0 },
+                            nativeOn: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.clickitem(0)
+                              }
+                            },
+                            model: {
+                              value: _vm.articleForm.is_jump,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "is_jump", $$v)
+                              },
+                              expression: "articleForm.is_jump"
+                            }
+                          },
+                          [_vm._v("开启二级域名随机跳转")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      [
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.iframe,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "iframe", $$v)
+                              },
+                              expression: "articleForm.iframe"
+                            }
+                          },
+                          [_vm._v("嵌套网页")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-checkbox",
+                          {
+                            attrs: { "true-label": "1", "false-label": "0" },
+                            model: {
+                              value: _vm.articleForm.source_check,
+                              callback: function($$v) {
+                                _vm.$set(_vm.articleForm, "source_check", $$v)
+                              },
+                              expression: "articleForm.source_check"
+                            }
+                          },
+                          [_vm._v("来源检测")]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-tab-pane",
+                  { attrs: { label: "选择模板", name: "second" } },
+                  [
+                    _c(
+                      "el-select",
+                      {
+                        attrs: { placeholder: "请选择" },
+                        model: {
+                          value: _vm.articleForm.template_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.articleForm, "template_id", $$v)
+                          },
+                          expression: "articleForm.template_id"
+                        }
+                      },
+                      _vm._l(_vm.templateOption, function(item) {
+                        return _c("el-option", {
+                          key: item.value,
+                          attrs: { label: item.label, value: item.value }
+                        })
+                      })
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
       ],
       1
     )

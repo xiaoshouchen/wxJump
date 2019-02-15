@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 class ArticleController extends BaseController
 {
@@ -48,6 +49,7 @@ class ArticleController extends BaseController
             'is_encryption' => 'nullable', //页面加密
             'iframe' => 'nullable', //嵌套网页
             'source_check' => 'nullable', //来源检测
+            'template_id' => 'nullable', //模板Id
         ]);
 
         $article['publish_time'] = date('Y-m-d H:i:s'); //发布时间默认当前时间
@@ -71,19 +73,8 @@ class ArticleController extends BaseController
         return $this->returnData($data->makeHidden(['status', 'other'])->toArray());
     }
 
-    public function getPid($id)
-    {
-        $pid = Categroy::where('id', $id)->first(['id', 'pid'])->toArray();
-        //如果不是最顶级
-        if ($pid['pid'] != 0) {
-            return $this->getPid($pid['pid']);
-        }
-        return $pid['id'];
-    }
-
     public function getList(Request $request)
     {
-
         $query = $this->model::orderBy('publish_time', 'desc');
         if (isSuperManager()) {
             $query = $query->where('author', \Illuminate\Support\Facades\Auth::user()->username);
@@ -122,6 +113,7 @@ class ArticleController extends BaseController
             'is_encryption' => 'nullable', //页面加密
             'iframe' => 'nullable', //嵌套网页
             'source_check' => 'nullable', //来源检测
+            'template_id' => 'nullable', //模板Id
         ]);
         $res = Article::find($id)->update($filedValue);
         return $this->returnMsg($res);

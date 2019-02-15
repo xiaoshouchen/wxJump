@@ -45,25 +45,38 @@
                 <p>
                     <el-input v-model="articleForm.physics" placeholder="物理按键点击返回"></el-input>
                 </p>
-                <p>
-                    <!--<el-radio  @click.native.prevent="isWechat(1)" v-model="articleForm.is_wechat" :label="1">开启微信检测</el-radio>-->
-                    <!--<el-radio  @click.native.prevent="isWechat(0)" v-model="articleForm.is_wechat" :label="0" style="margin-right: 25px">浏览器打开</el-radio>-->
-                    <el-checkbox true-label="1" false-label="0" v-model="articleForm.is_wechat">开启微信检测</el-checkbox>
-                </p>
-                <p>
-                    <el-radio @click.native.prevent="is_encryption(1)" v-model="articleForm.is_encryption" :label="1">页面加密</el-radio>
-                    <el-radio @click.native.prevent="is_encryption(0)" v-model="articleForm.is_encryption" :label="0" >使用前端框架</el-radio>
-                    <el-radio @click.native.prevent="is_encryption(2)" v-model="articleForm.is_encryption" :label="2">异步加载</el-radio>
-                </p>
-                <p>
-                    <el-radio :label="1" @click.native.prevent="clickitem(1)" v-model="articleForm.is_jump">开启主域名随机跳转</el-radio>
-                    <el-radio :label="0" @click.native.prevent="clickitem(0)"v-model="articleForm.is_jump">开启二级域名随机跳转</el-radio>
-                </p>
-                <p>
-                    <el-checkbox true-label="1" false-label="0" v-model="articleForm.iframe">嵌套网页</el-checkbox>
-                    <el-checkbox true-label="1" false-label="0" v-model="articleForm.source_check">来源检测</el-checkbox>
-
-                </p>
+                <el-tabs v-model="activeName">
+                    <el-tab-pane label="选项配置" name="first">
+                        <p>
+                            <!--<el-radio  @click.native.prevent="isWechat(1)" v-model="articleForm.is_wechat" :label="1">开启微信检测</el-radio>-->
+                            <!--<el-radio  @click.native.prevent="isWechat(0)" v-model="articleForm.is_wechat" :label="0" style="margin-right: 25px">浏览器打开</el-radio>-->
+                            <el-checkbox true-label="1" false-label="0" v-model="articleForm.is_wechat">开启微信检测</el-checkbox>
+                        </p>
+                        <p>
+                            <el-radio @click.native.prevent="is_encryption(1)" v-model="articleForm.is_encryption" :label="1">页面加密</el-radio>
+                            <el-radio @click.native.prevent="is_encryption(0)" v-model="articleForm.is_encryption" :label="0" >使用前端框架</el-radio>
+                            <el-radio @click.native.prevent="is_encryption(2)" v-model="articleForm.is_encryption" :label="2">异步加载</el-radio>
+                        </p>
+                        <p>
+                            <el-radio :label="1" @click.native.prevent="clickitem(1)" v-model="articleForm.is_jump">开启主域名随机跳转</el-radio>
+                            <el-radio :label="0" @click.native.prevent="clickitem(0)"v-model="articleForm.is_jump">开启二级域名随机跳转</el-radio>
+                        </p>
+                        <p>
+                            <el-checkbox true-label="1" false-label="0" v-model="articleForm.iframe">嵌套网页</el-checkbox>
+                            <el-checkbox true-label="1" false-label="0" v-model="articleForm.source_check">来源检测</el-checkbox>
+                        </p>
+                    </el-tab-pane>
+                    <el-tab-pane label="选择模板" name="second">
+                        <el-select v-model="articleForm.template_id" placeholder="请选择">
+                            <el-option
+                                    v-for="item in templateOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-tab-pane>
+                </el-tabs>
             </el-card>
         </div>
     </div>
@@ -99,11 +112,23 @@
                     iframe: "0",//嵌套网页
                     source_check:"1",//来源检测
                     ajax:"", //异步加载文章
+                    template_id:"",//模板Id
                 },
+                activeName:'first',
                 rules: {
                     title: [{required: true, message: '文章标题为必填项目', trigger: 'blur'},],
                     content: [{required: true, message: '文章内容为必填项目', trigger: 'blur'}],
                 },
+                templateOption:[
+                    {
+                        label:'',
+                        value:""
+                    },
+                    {
+                        label:'外联网页,异步加载内容,加密',
+                        value:1
+                    }
+                ],
                 options: [],
                 Ueconfig:{
                     serverUrl: '/static/UEditor/php/controller.php'

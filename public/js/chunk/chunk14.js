@@ -777,7 +777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filterValue: {
                 where: {},
                 page: 1,
-                limit: 30,
+                limit: 10,
                 search: '',
                 orderBy: 'id,asc'
             },
