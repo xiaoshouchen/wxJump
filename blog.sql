@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2019-02-15 22:12:57
+Date: 2019-02-16 22:28:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `articles` (
   `appid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信appId',
   `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '微信密匙',
   `right_now` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '网站立即跳转到指定地址',
-  `cnzz` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文章流量统计',
+  `cnzz` text COLLATE utf8mb4_unicode_ci COMMENT '文章流量统计',
   `deleted_at` timestamp NULL DEFAULT NULL,
   `is_encryption` tinyint(1) DEFAULT NULL,
   `iframe` tinyint(1) DEFAULT NULL,
