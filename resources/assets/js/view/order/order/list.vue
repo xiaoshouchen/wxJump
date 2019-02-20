@@ -136,7 +136,7 @@
                                         }
                                     }, "下单时间:" + this.row.created_at),
                                     createElement('p', {}, this.row.goods_name),
-                                    createElement('p', {}, this.row.meal_name + "×" + this.row.num),
+                                    createElement('p', {}, this.row.meal_name + ' ' + this.row.size_name + "×" + this.row.num),
                                 ]);
 
                             }
@@ -282,8 +282,8 @@
                         tools: this.handleGetBtn()
                     }
                 ],
-                id:0,
-                index:0,
+                id: 0,
+                index: 0,
                 orderListAuth: [
                     {
                         delete: false,
@@ -335,7 +335,7 @@
                     this.$message.error('删除信息,必须填写');
                     return false
                 }
-                goodsOrderDelete(this.id, {msg:this.confirm}).then((response) => {
+                goodsOrderDelete(this.id, {msg: this.confirm}).then((response) => {
                     //成功响应动态移除表格项
                     this.handleDeleteRow(this.index);
                     //提示信息
@@ -418,17 +418,20 @@
         margin: 0;
         font-size: 14px;
     }
-    ul,li {
+
+    ul, li {
         padding: 0;
         margin: 0;
     }
+
     .Briefing {
         height: 60px;
         line-height: 60px;
         background: #de9c95;
         margin-top: 10px;
     }
-    .Briefing ul>li {
+
+    .Briefing ul > li {
         list-style: none;
         float: left;
         margin-left: 25px;
