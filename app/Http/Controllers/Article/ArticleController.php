@@ -146,8 +146,10 @@ class ArticleController extends BaseController
         $articleId = $request->get('id', 0);
         $page = $request->get('page', 1);
         $limit = $request->get('limit', 10);
+        $type = $request->get('type', 1);
         $url = Url::query()
             ->where('status', 0)
+            ->where('type', $type)
             ->skip(($page - 1) * $limit)
             ->take($limit)
             ->get()
@@ -156,46 +158,46 @@ class ArticleController extends BaseController
         foreach ($url as $item) {
             if ($item['type'] == 1) {
                 array_push($result, [
-                        'url'=>'http://'.$item->url.'/2479515/'.$articleId,
-                        'url_type'=>$item->url_type,
+                        'url'=>'http://'.$item['url'].'/2479515/'.$articleId,
+                        'url_type'=>$item['url_type'],
                     ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/iujln/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/iujln/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/mlj/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/mlj/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/tuil/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/tuil/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/123/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/123/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/sdgsdfg/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/sdgsdfg/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/kjjhkj/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/kjjhkj/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/abc/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/abc/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/show/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/show/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
             }
             if($item['type'] == 0) {
                 array_push($result, [
-                    'url'=>'http://'.$item->url.'/A-url/'.$articleId,
-                    'url_type'=>$item->url_type,
+                    'url'=>'http://'.$item['url'].'/A-url/'.$articleId,
+                    'url_type'=>$item['url_type'],
                 ]);
             }
         }
