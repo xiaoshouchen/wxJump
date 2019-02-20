@@ -128,6 +128,9 @@
                                 row: Object         // 接受当前行参数
                             },
                             render: function (createElement) {
+                                if (this.row.size_name == null) {
+                                    this.row.size_name = '';
+                                }
                                 return createElement('div', {}, [
                                     createElement('p', {}, '订单号:' + this.row.order_num),
                                     createElement('p', {
@@ -138,7 +141,6 @@
                                     createElement('p', {}, this.row.goods_name),
                                     createElement('p', {}, this.row.meal_name + ' ' + this.row.size_name + "×" + this.row.num),
                                 ]);
-
                             }
                         }
                     },
